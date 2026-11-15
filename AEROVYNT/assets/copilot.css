@@ -1,0 +1,64 @@
+/* SI-assisted: developed with Claude (Anthropic), a large language model, and reviewed and tested by the AEROVYNT team. See SI_DISCLOSURE.md. */
+/* AEROVYNT Co-Pilot: dark mission stage (setup, check-in call to action, readiness) over the light vitals and tabs. */
+
+/* mission setup */
+.stage-dark .mission{display:grid;grid-template-columns:minmax(260px,1fr) 2.4fr;gap:clamp(16px,3vw,36px);align-items:start;margin:0 0 14px;padding:20px 24px;border-radius:26px;
+ background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14)}
+.mission>*{min-width:0}
+.m-lbl{display:block;margin:0 0 8px;font-size:.95rem;font-weight:750;color:#DCE8FF}
+.m-hint{display:block;margin-top:8px;font-size:.78rem;color:#9FB6DD;line-height:1.4}
+.selwrap{position:relative}
+.selwrap select.input{appearance:none;-webkit-appearance:none;min-height:58px;padding:0 52px 0 18px;border-radius:18px;cursor:pointer;background:#fff;border:2px solid rgba(10,132,255,.7);
+ box-shadow:0 0 0 4px rgba(10,132,255,.18),0 10px 26px rgba(0,0,0,.30);font:750 1.05rem var(--sans);color:var(--ink);text-overflow:ellipsis}
+.selwrap select.input:hover{border-color:#38A1FF}
+.selwrap select.input:focus{outline:3px solid rgba(125,211,252,.55);outline-offset:2px;border-color:#0A84FF}
+.selwrap::after{content:"";position:absolute;right:10px;top:50%;width:38px;height:38px;margin-top:-19px;border-radius:12px;pointer-events:none;
+ background:#0A84FF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/20px no-repeat}
+.mission .sc-row .btn{min-height:52px;font-size:.9rem;color:#EAF1FF;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);box-shadow:none}
+.mission .sc-row .btn:hover{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4);box-shadow:0 12px 26px rgba(0,0,0,.28)}
+
+/* check-in call to action */
+.checkin-cta{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:0 0 14px;padding:clamp(20px,3vw,30px) clamp(22px,3.4vw,36px);border-radius:28px;color:#fff;
+ background:linear-gradient(135deg,#0A84FF,#5E5CE6 62%,#22D3EE);box-shadow:0 22px 50px rgba(10,132,255,.28)}
+.checkin-cta h2{margin:0 0 4px;font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;color:#fff}
+.checkin-cta p{margin:0;max-width:36em;line-height:1.5;opacity:.94;font-size:.98rem}
+.checkin-cta .btn-white{min-height:56px;padding:0 28px;border-radius:18px;font-size:1rem;box-shadow:0 10px 26px rgba(11,27,51,.22)}
+
+/* readiness row sits inside the stage */
+.stage-dark .l-hero3{margin:0}
+.stage-dark .l-hero3>.g,.stage-dark .l-hero3>.g-ok,.stage-dark .l-hero3>.g-warn,.stage-dark .l-hero3>.g-bad{margin-bottom:0;height:100%}
+.stage-dark .l-hero3{align-items:stretch}
+.stage-dark .flash{margin-bottom:14px}
+
+/* vitals and tabs below the stage */
+.cards5{margin-top:22px}
+#ci-top{scroll-margin-top:104px}
+
+/* floating shortcut, visible only while the form is off screen */
+.fab{position:fixed;z-index:60;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom,0px));min-height:56px;padding:0 26px;border-radius:999px;border:none;cursor:pointer;
+ font:750 1rem var(--sans);color:#fff;background:linear-gradient(135deg,#0A84FF,#5E5CE6);box-shadow:0 16px 36px rgba(10,132,255,.45),0 0 0 4px rgba(255,255,255,.65);transition:transform .16s ease,box-shadow .16s ease}
+.fab:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(10,132,255,.55),0 0 0 4px rgba(255,255,255,.8)}
+
+@media (max-width:980px){.stage-dark .mission{grid-template-columns:1fr;padding:18px}}
+@media (max-width:640px){.checkin-cta{padding:20px}.checkin-cta .btn-white{width:100%}}
+
+/* NASA risk coverage map (Hazards tab) */
+#riskmap{margin-top:26px}
+.rk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.rk-t{font-family:var(--display);font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:0 0 8px;max-width:22em}
+.rk-sub{margin:0;font-size:.92rem;line-height:1.55;color:#40536F;max-width:42em}
+.rk-filter{display:flex;gap:6px;flex-wrap:wrap}
+.rk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rk{margin:0;padding:18px 20px}
+.rk h4{margin:8px 0 6px;font-size:1.02rem;line-height:1.25;letter-spacing:-.01em}
+.rk p{margin:0 0 6px;font-size:.84rem;line-height:1.5;color:#40536F}
+.rk-nasa{font-size:.78rem!important;color:#5B6B85!important}
+.rk-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.rk-grp{font-size:.74rem;font-weight:650;color:#5B6B85}
+.rk-tag{font-size:.74rem;font-weight:750;padding:3px 10px;border-radius:999px;border:1px solid}
+.rk-measured{border-color:rgba(16,185,129,.45)}.rk-measured .rk-tag{color:#047857;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4)}
+.rk-indirect{border-color:rgba(245,158,11,.45)}.rk-indirect .rk-tag{color:#92400E;background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.45)}
+.rk-out .rk-tag{color:#475569;background:rgba(148,163,184,.16);border-color:rgba(148,163,184,.45)}
+@media (max-width:1100px){.rk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.rk-grid{grid-template-columns:1fr}}
+.pk-btns{display:flex;gap:10px;flex-wrap:wrap}

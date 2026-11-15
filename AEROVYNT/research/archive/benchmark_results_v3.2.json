@@ -1,0 +1,186 @@
+{
+  "engine_version": "3.2",
+  "scenarios": {
+    "Strong Multi-System (1.0\u00d7)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 60.4,
+        "watch": 11.5,
+        "action": 2.6
+      },
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "watch": 100.0,
+        "action": 100.0
+      },
+      "median_delay_days": {
+        "watch": 1.0,
+        "action": 3.0
+      }
+    },
+    "Subtle Multi-System (0.5\u00d7 + CUSUM)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 61.0,
+        "watch": 12.0,
+        "action": 2.7
+      },
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "watch": 96.7,
+        "action": 41.7
+      },
+      "median_delay_days": {
+        "watch": 3.0,
+        "action": 5.0
+      }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 10,
+      "false_alarm_pct": {
+        "earth": 62.9,
+        "watch": 10.7,
+        "action": 2.8
+      },
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "watch": 88.3,
+        "action": 28.3
+      },
+      "median_delay_days": {
+        "watch": 5.0,
+        "action": 8.0
+      }
+    },
+    "HR / Autonomic Infection": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 62.8,
+        "watch": 10.6,
+        "action": 2.8
+      },
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "watch": 100.0,
+        "action": 93.3
+      },
+      "median_delay_days": {
+        "watch": 2.0,
+        "action": 4.0
+      }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 57.2,
+        "watch": 13.2,
+        "action": 4.4
+      },
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "watch": 98.3,
+        "action": 45.0
+      },
+      "median_delay_days": {
+        "watch": 3.0,
+        "action": 5.0
+      }
+    }
+  },
+  "sensitivity": [
+    {
+      "z_thresh": 2.0,
+      "converge_action": 2,
+      "false_alarm_action_pct": 4.7,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.0,
+      "converge_action": 3,
+      "false_alarm_action_pct": 2.8,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.0,
+      "converge_action": 4,
+      "false_alarm_action_pct": 2.8,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.5,
+      "converge_action": 2,
+      "false_alarm_action_pct": 3.8,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.5,
+      "converge_action": 3,
+      "false_alarm_action_pct": 2.3,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.5,
+      "converge_action": 4,
+      "false_alarm_action_pct": 2.2,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.0,
+      "converge_action": 2,
+      "false_alarm_action_pct": 3.5,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.0,
+      "converge_action": 3,
+      "false_alarm_action_pct": 2.3,
+      "detect_action_pct": 97.5,
+      "is_frozen_default": true
+    },
+    {
+      "z_thresh": 3.0,
+      "converge_action": 4,
+      "false_alarm_action_pct": 2.3,
+      "detect_action_pct": 97.5,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.5,
+      "converge_action": 2,
+      "false_alarm_action_pct": 2.6,
+      "detect_action_pct": 95.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.5,
+      "converge_action": 3,
+      "false_alarm_action_pct": 2.1,
+      "detect_action_pct": 95.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.5,
+      "converge_action": 4,
+      "false_alarm_action_pct": 2.1,
+      "detect_action_pct": 95.0,
+      "is_frozen_default": false
+    }
+  ]
+}

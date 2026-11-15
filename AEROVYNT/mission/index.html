@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AEROVYNT | Mars transit mission simulator</title>
+<meta name="description" content="Simulated 180-day Mars transit: crew profile, simulated sensors, risk scores, explainable alerts, countermeasure planner and mission log. All local, works offline.">
+<meta name="ai-disclosure" content="Built with SI assistance (Claude, Anthropic). See SI_DISCLOSURE.md">
+<link rel="icon" href="../assets/icon.svg">
+<style>
+/* SI-assisted: developed with Claude (Anthropic) and reviewed by the AEROVYNT team. See SI_DISCLOSURE.md. */
+:root{--bg:#070b16;--card:#101729;--bd:#243050;--tx:#e8edf8;--mut:#9aa7c4;--ok:#34d399;--w:#fbbf24;--a:#f87171;--blue:#60a5fa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--blue)}.wrap{max-width:1100px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+h1{font-size:1.5rem;margin:.3em 0}h2{font-size:1.05rem;margin:0 0 8px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin:12px 0}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:800px){.g2,.g4,.g5{grid-template-columns:1fr 1fr}}@media(max-width:520px){.g2,.g4,.g5{grid-template-columns:1fr}}
+.mut{color:var(--mut)}.small{font-size:.82rem}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;border-radius:99px;padding:1px 8px;margin-right:4px;border:1px solid}
+.t-sim{color:#c4b5fd;border-color:#7c3aed}.t-mod{color:var(--w);border-color:#b45309}.t-real{color:var(--ok);border-color:#059669}
+.st-ok{color:var(--ok)}.st-watch{color:var(--w)}.st-action{color:var(--a)}
+.bar{height:8px;background:#1b2440;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%}
+button,select,input{font:inherit;color:var(--tx);background:#18213a;border:1px solid var(--bd);border-radius:9px;padding:6px 10px}
+button{cursor:pointer}button.on{background:#1d4ed8;border-color:#3b82f6}
+label{display:block;font-size:.82rem;color:var(--mut);margin:6px 0 2px}input[type=range]{width:100%;padding:0}
+table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{padding:4px 6px;border-bottom:1px solid var(--bd);text-align:left}
+.scroll{max-height:300px;overflow:auto}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.alert{border-left:4px solid;padding:8px 10px;margin:8px 0;background:#0c1224;border-radius:8px}
+.alert.watch{border-color:var(--w)}.alert.action{border-color:var(--a)}
+.crew{cursor:pointer}.crew.sel{outline:2px solid var(--blue)}
+svg text{fill:var(--mut);font-size:11px}
+</style></head><body><div class="wrap">
+<header><div><b>AEROVYNT</b> · Mars transit mission simulator</div><nav><a href="../">Home</a> · <a href="../copilot/">Co-Pilot</a> · <a href="../evidence/">Evidence</a></nav></header>
+<h1>180-day Mars transit: what the crew's health looks like day by day</h1>
+<p class="mut">Everything here runs in your browser. Nothing is sent anywhere, and it works offline once loaded. Sensor values are <span class="tag t-sim">SIMULATED</span>; risks and trajectories are <span class="tag t-mod">MODELED</span> from published ranges (see the provenance panel). This is a research demo, not a medical device.</p>
+
+<div class="card"><h2>Crew dashboard <span class="small mut">(click a crew member)</span></h2><div class="grid g4" id="crew"></div></div>
+
+<div class="grid g2">
+<div class="card"><h2>1 · Astronaut profile <span class="tag t-sim">INPUT</span></h2>
+<label>Callsign</label><input id="p-name" maxlength="20">
+<label>Role</label><input id="p-role" maxlength="24">
+<label>Body mass (kg) <span class="small">sets the daily fluid target, 35 ml/kg</span></label><input id="p-mass" type="number" min="40" max="130">
+<label>Usual sleep on Earth (h)</label><input id="p-sleep" type="number" step="0.1" min="5" max="9">
+<label>Exercise adherence (%) <span class="small">how much of the exercise plan this person completes</span></label><input id="p-adh" type="number" min="0" max="100">
+<p class="small mut">Saved only in this browser (localStorage). Delete by clearing site data.</p></div>
+
+<div class="card"><h2>2 · Countermeasure planner <span class="tag t-mod">MODELED</span></h2>
+<p class="small mut">Toggle the plan and watch the timeline change. The dashed line is the same crew member with no countermeasures.</p>
+<div class="row" id="cm"></div><div id="cm-note" class="small mut" style="margin-top:8px"></div></div>
+</div>
+
+<div class="card"><h2>3 · Mission risk timeline</h2>
+<svg id="tl" viewBox="0 0 800 260" width="100%" role="img" aria-label="Risk score by domain over 180 days"></svg>
+<div class="row small" id="legend"></div>
+<div class="row" style="margin-top:8px"><button id="play">▶ Play</button><input id="day" type="range" min="1" max="180" value="1" style="flex:1;min-width:160px" aria-label="Mission day"><b id="dlabel"></b></div></div>
+
+<div class="grid g2">
+<div class="card"><h2>4 · Today's risk scores and alerts</h2><div id="scores"></div><div id="alerts"></div></div>
+<div class="card"><h2>5 · What to do (recommendations)</h2><div id="recs"></div>
+<p class="small mut">Earth round trip is up to 44 min at Mars. <b>Fast clock</b> items (solar particle event) are acted on board at once; <b>slow clock</b> items (drift over days) are reported in the next downlink.</p></div>
+</div>
+
+<div class="card"><h2>6 · Mission log</h2>
+<div class="row"><button id="t-ev" class="on">Events</button><button id="t-dy">Daily data (simulated sensors)</button><button id="csv">Download CSV</button></div>
+<div class="scroll" id="log" style="margin-top:8px"></div></div>
+
+<div class="card"><h2>7 · Data provenance and assumptions</h2>
+<div class="scroll"><table><thead><tr><th>Quantity</th><th>Kind</th><th>Value / assumption</th><th>Source</th></tr></thead><tbody>
+<tr><td>Daily sensor readings</td><td><span class="tag t-sim">SIMULATED</span></td><td>Seeded random noise around the modeled trend; sleep noise SD 0.9 h to match real wearable users</td><td>This demo; noise level from PMData analysis in <a href="../evidence/">Evidence</a></td></tr>
+<tr><td>Deep-space radiation rate</td><td><span class="tag t-real">MEASURED (published)</span></td><td>about 1.84 mSv/day dose equivalent in cruise, so about 330 mSv for a 180-day one-way leg</td><td>Zeitlin et al. 2013, Science 340:1080 (MSL RAD)</td></tr>
+<tr><td>Career dose limit</td><td><span class="tag t-real">POLICY</span></td><td>600 mSv, used as the 100% mark</td><td>NASA-STD-3001 (2022 update)</td></tr>
+<tr><td>Solar particle event</td><td><span class="tag t-mod">MODELED</span></td><td>One event on day 71: 40 mSv unsheltered, 8 mSv with a storm-shelter drill. Size and effect are our assumptions.</td><td>Assumption</td></tr>
+<tr><td>Spaceflight sleep</td><td><span class="tag t-mod">MODELED</span></td><td>0.6 h loss from spaceflight itself; extra drift from a 24 h 39 min Mars day without light schedule; slow isolation drift</td><td>Barger et al. 2014 (ISS about 6 h); Mars-500 results (Basner et al. 2013)</td></tr>
+<tr><td>Bone and muscle loss</td><td><span class="tag t-mod">MODELED</span></td><td>Bone about 1.2% per month unprotected, muscle index falls 25% over 180 days; exercise cuts both by up to 65% at full adherence</td><td>Approximate ranges from the ISS literature (LeBlanc, Sibonga); effect sizes are assumptions</td></tr>
+<tr><td>Hydration, wellbeing</td><td><span class="tag t-mod">MODELED</span></td><td>Fluid-shift offset and a mid-mission wellbeing dip (the "third-quarter" effect, weak evidence)</td><td>Assumption</td></tr>
+<tr><td>Risk scores, thresholds</td><td><span class="tag t-mod">MODELED</span></td><td>0 to 100 per domain; Watch at 40, Action at 70. Illustrative design choice, not clinically validated.</td><td>This demo</td></tr>
+<tr><td>Real-data checks</td><td><span class="tag t-real">REAL DATA</span></td><td>The engine's noise and false-alarm behaviour were checked on NASA OSD-575 and 13 PMData users, which have no illness labels</td><td><a href="../evidence/">Evidence page</a></td></tr>
+</tbody></table></div>
+<p class="small mut">Not covered here: space-radiation cancer or CNS risk models, individual genetics, clinical review. Citations are from memory of the literature; verify exact figures before quoting them.</p></div>
+
+<p class="small mut">Team: Muhammad Salman and Sayed Hamza · NASA Space Apps 2026 · Built with SI assistance (Claude, Anthropic), see SI_DISCLOSURE.md</p>
+</div>
+<script>
+/* SI-assisted code. Self-contained, no network. */
+(function(){
+var N=180,SPE=71,WATCH=40,ACT=70;
+var DOM=[["rad","Radiation","#f472b6"],["sleep","Sleep & circadian","#60a5fa"],["decon","Microgravity deconditioning","#34d399"],["hyd","Hydration","#22d3ee"],["psy","Psychological wellbeing","#fbbf24"]];
+var DEF=[{name:"CMDR",role:"Commander",mass:80,sleep:7.2,adh:85,seed:11},{name:"PLT",role:"Pilot",mass:72,sleep:6.8,adh:70,seed:23},{name:"FE",role:"Flight engineer",mass:68,sleep:7.5,adh:90,seed:37},{name:"MO",role:"Medical officer",mass:62,sleep:7.0,adh:60,seed:41}];
+var crew=DEF.map(function(c){return Object.assign({},c)});
+try{var sv=JSON.parse(localStorage.getItem("aero_mission_crew")||"null");if(sv&&sv.length==4)crew=sv}catch(e){}
+var plan={ex:true,light:true,shelter:true,fluid:true,psy:true},sel=0,day=1,timer=null,view="ev";
+var CM=[["ex","Exercise 2.5 h/day (resistive + aerobic)"],["light","Light and sleep schedule"],["shelter","Storm-shelter drill"],["fluid","Fluid plan"],["psy","Crew contact and psych support"]];
+function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function gauss(r){return Math.sqrt(-2*Math.log(r()+1e-9))*Math.cos(6.283185*r())}
+function cl(x,a,b){return Math.max(a,Math.min(b,x))}
+function sim(c,p){
+  var r=rng(c.seed),o=[],cum=0,adh=c.adh/100,sl=[],wb=[],hy=[];
+  for(var d=1;d<=N;d++){
+    var dose=1.84*(1+0.08*gauss(r));if(d==SPE)dose+=p.shelter?8:40;cum+=dose;
+    var circ=p.light?0.15:1,sleep=c.sleep-0.6-0.8*circ*(1-Math.exp(-d/20))-(p.psy?0.2:0.5)*d/N+0.9*gauss(r);
+    var bone=-(1.2/30)*d*(p.ex?1-0.65*adh:1),mus=100-(d/N)*(p.ex?25*(1-0.65*adh):25);
+    var hyd=cl(85-8-(p.fluid?0:10)+4*gauss(r),0,100);
+    var dip=1.2*Math.exp(-Math.pow((d-112)/22,2))*(p.psy?0.4:1),well=cl(7.5-0.6*d/90*(p.psy?0.5:1)-dip+0.5*gauss(r),1,10);
+    sl.push(sleep);wb.push(well);hy.push(hyd);
+    var m7=function(a){if(a.length<7)return null;var s=a.slice(-7);return s.reduce(function(x,y){return x+y},0)/s.length};
+    var risk={rad:cl(cum/600*100,0,100),sleep:m7(sl)===null?0:cl((7-m7(sl))/2*100,0,100),decon:cl(Math.max(-bone/6,(100-mus)/30)*100,0,100),
+      hyd:m7(hy)===null?0:cl((85-m7(hy))/35*100,0,100),psy:m7(wb)===null?0:cl((6.5-m7(wb))/3*100,0,100)};
+    risk.all=Math.max(risk.rad,risk.sleep,risk.decon,risk.hyd,risk.psy);
+    o.push({d:d,dose:dose,cum:cum,sleep:sleep,bone:bone,mus:mus,hyd:hyd,well:well,risk:risk});
+  }return o}
+function st(v){return v>=ACT?"action":v>=WATCH?"watch":"ok"}
+var cache={};function run(i,p){var k=i+JSON.stringify(p)+JSON.stringify(crew[i]);return cache[k]||(cache[k]=sim(crew[i],p))}
+var NONE={ex:false,light:false,shelter:false,fluid:false,psy:false};
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+function events(i){
+  var s=run(i,plan),ev=[],prev={};
+  s.forEach(function(x){
+    if(x.d==SPE)ev.push([x.d,"Solar particle event","Dose spike "+x.dose.toFixed(0)+" mSv"+(plan.shelter?" (shelter drill reduced it)":" (no shelter drill)"),"action"]);
+    DOM.forEach(function(D){var k=D[0],v=st(x.risk[k]);if(v!==(prev[k]||"ok")){ev.push([x.d,D[1],(v=="ok"?"Back to normal":v=="watch"?"Watch level reached":"Action level reached")+" (score "+x.risk[k].toFixed(0)+")",v])}prev[k]=v})});
+  return ev}
+function alertsFor(x,c){
+  var out=[],r=x.risk,sm=x.sleep;
+  if(r.rad>=WATCH)out.push(["rad",r.rad,"Radiation","Cumulative dose "+x.cum.toFixed(0)+" mSv = "+r.rad.toFixed(0)+"% of the 600 mSv career limit.","Rule: score = cumulative dose / 600 mSv. Dose rate 1.84 mSv/day is the published MSL RAD cruise value.","FAST on a solar event, otherwise SLOW"]);
+  if(r.sleep>=WATCH)out.push(["sleep",r.sleep,"Sleep & circadian","7-day mean sleep is below "+(7-r.sleep/100*2).toFixed(1)+" h (usual on Earth "+c.sleep+" h).","Rule: score rises as the 7-night mean falls from 7 h to 5 h.","SLOW"]);
+  if(r.decon>=WATCH)out.push(["decon",r.decon,"Deconditioning","Modeled bone change "+x.bone.toFixed(1)+"%, muscle index "+x.mus.toFixed(0)+"/100.","Rule: bone loss / 6% or muscle loss / 30%, whichever is worse.","SLOW"]);
+  if(r.hyd>=WATCH)out.push(["hyd",r.hyd,"Hydration","Hydration index "+x.hyd.toFixed(0)+"/100 (fluid target "+Math.round(c.mass*35)+" ml/day).","Rule: score rises as the 7-day mean index falls from 85 to 50.","SLOW"]);
+  if(r.psy>=WATCH)out.push(["psy",r.psy,"Wellbeing","7-day mean mood score is low (today "+x.well.toFixed(1)+"/10).","Rule: score rises as the 7-day mean falls from 6.5 to 3.5.","SLOW"]);
+  return out}
+var REC={rad:["Check the radiation monitor against the plan; keep time in the shielded area during quiet periods.","Run the storm-shelter drill and move to the shelter at any solar alert (fast clock)."],
+sleep:["Fix the sleep window and use the bright/dim light schedule.","Cut caffeine and screens in the last 3 hours before sleep; report to the surgeon if below 6 h for a week."],
+decon:["Do the full resistive and aerobic session today.","Report missed sessions; the plan only works with high adherence."],
+hyd:["Drink to the fluid target and log it.","Check urine colour; report dizziness or headache."],
+psy:["Schedule a private call or video message and a shared crew meal.","Flag low mood to the surgeon in the next downlink; do not wait for a crisis."]};
+
+function renderCrew(){
+  $("#crew").innerHTML=crew.map(function(c,i){var x=run(i,plan)[day-1],r=x.risk,w=DOM.slice().sort(function(a,b){return r[b[0]]-r[a[0]]})[0];
+    return '<div class="card crew'+(i==sel?" sel":"")+'" data-i="'+i+'" style="margin:0"><b>'+esc(c.name)+'</b> <span class="small mut">'+esc(c.role)+'</span><div class="bar" style="margin:6px 0"><i style="width:'+r.all+'%;background:var(--'+(st(r.all)=="ok"?"ok":st(r.all)=="watch"?"w":"a")+')"></i></div><span class="st-'+st(r.all)+'"><b>'+r.all.toFixed(0)+'</b> '+st(r.all).toUpperCase()+'</span> <span class="small mut">top: '+w[1]+'</span></div>'}).join("")}
+function renderProfile(){var c=crew[sel];$("#p-name").value=c.name;$("#p-role").value=c.role;$("#p-mass").value=c.mass;$("#p-sleep").value=c.sleep;$("#p-adh").value=c.adh}
+function renderCM(){$("#cm").innerHTML=CM.map(function(m){return '<button data-k="'+m[0]+'" class="'+(plan[m[0]]?"on":"")+'">'+(plan[m[0]]?"✓ ":"")+m[1]+'</button>'}).join("");
+  var a=run(sel,plan),b=run(sel,NONE),peak=function(s){return Math.max.apply(null,s.map(function(x){return x.risk.all}))};
+  $("#cm-note").textContent="Peak overall risk with this plan: "+peak(a).toFixed(0)+" (no countermeasures: "+peak(b).toFixed(0)+"). Radiation has no countermeasure here except the shelter drill, which is why its score keeps rising.";}
+function renderTL(){
+  var s=run(sel,plan),g=run(sel,NONE),W=800,H=260,L=34,B=22,X=function(d){return L+(d-1)/(N-1)*(W-L-10)},Y=function(v){return 10+(H-B-10)*(1-v/100)};
+  var h='';[0,40,70,100].forEach(function(v){h+='<line x1="'+L+'" x2="'+(W-10)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#243050" '+(v==40||v==70?'stroke-dasharray="4"':"")+'/><text x="2" y="'+(Y(v)+4)+'">'+v+'</text>'});
+  [1,30,60,90,120,150,180].forEach(function(d){h+='<text x="'+(X(d)-8)+'" y="'+(H-6)+'">'+d+'</text>'});
+  h+='<line x1="'+X(SPE)+'" x2="'+X(SPE)+'" y1="10" y2="'+(H-B)+'" stroke="#f87171" stroke-dasharray="2 3"/><text x="'+(X(SPE)+3)+'" y="22">solar event</text>';
+  var P=function(arr,k){return arr.map(function(x,i){return(i?"L":"M")+X(x.d).toFixed(1)+","+Y(x.risk[k]).toFixed(1)}).join("")};
+  h+='<path d="'+P(g,"all")+'" fill="none" stroke="#e8edf8" stroke-dasharray="5 4" opacity=".55"/>';
+  DOM.forEach(function(D){h+='<path d="'+P(s,D[0])+'" fill="none" stroke="'+D[2]+'" stroke-width="2"/>'});
+  h+='<line id="cur" x1="'+X(day)+'" x2="'+X(day)+'" y1="10" y2="'+(H-B)+'" stroke="#fff"/>';
+  $("#tl").innerHTML=h;
+  $("#legend").innerHTML=DOM.map(function(D){return '<span><span style="color:'+D[2]+'">●</span> '+D[1]+'</span>'}).join(" ")+' <span class="mut">┄ overall, no countermeasures</span>';
+  $("#tl").onclick=function(e){var r=this.getBoundingClientRect(),d=Math.round(1+((e.clientX-r.left)/r.width*W-L)/(W-L-10)*(N-1));setDay(cl(d,1,N))}}
+function renderToday(){
+  var c=crew[sel],x=run(sel,plan)[day-1],r=x.risk;
+  $("#dlabel").textContent="Day "+day+" / "+N;
+  $("#scores").innerHTML=DOM.map(function(D){var v=r[D[0]];return '<div class="small" style="display:flex;justify-content:space-between"><span>'+D[1]+'</span><b class="st-'+st(v)+'">'+v.toFixed(0)+' '+st(v).toUpperCase()+'</b></div><div class="bar" style="margin-bottom:6px"><i style="width:'+v+'%;background:'+D[2]+'"></i></div>'}).join("");
+  var al=alertsFor(x,c);
+  $("#alerts").innerHTML=al.length?al.map(function(a){return '<div class="alert '+st(a[1])+'"><b>'+a[2]+' · '+st(a[1]).toUpperCase()+'</b><br>'+esc(a[3])+'<div class="small mut">'+esc(a[4])+' · Clock: '+a[5]+'<br><span class="tag t-sim">SIMULATED INPUT</span><span class="tag t-mod">MODELED SCORE</span></div></div>'}).join(""):'<p class="st-ok">No alerts today. All domains below Watch (40).</p>';
+  var rc=al.length?al:[],h="";
+  rc.forEach(function(a){h+='<div class="alert '+st(a[1])+'"><b>'+a[2]+'</b><ul style="margin:4px 0 0 18px;padding:0">'+REC[a[0]].map(function(t){return "<li>"+t+"</li>"}).join("")+'</ul></div>'});
+  $("#recs").innerHTML=h||'<p class="mut">Nothing to act on today. Keep the routine: exercise, sleep window, fluids, crew contact.</p>'}
+function renderLog(){
+  var s=run(sel,plan),h;
+  if(view=="ev"){var ev=events(sel).filter(function(e){return e[0]<=day});
+    h='<table><thead><tr><th>Day</th><th>Domain</th><th>Event</th></tr></thead><tbody>'+(ev.length?ev.reverse().map(function(e){return '<tr><td>'+e[0]+'</td><td>'+esc(e[1])+'</td><td class="st-'+e[3]+'">'+esc(e[2])+'</td></tr>'}).join(""):'<tr><td colspan="3" class="mut">No events yet.</td></tr>')+'</tbody></table>'}
+  else{h='<table><thead><tr><th>Day</th><th>Dose mSv</th><th>Cum mSv</th><th>Sleep h</th><th>Hydr</th><th>Mood</th><th>Overall risk</th></tr></thead><tbody>'+s.slice(0,day).reverse().map(function(x){return '<tr><td>'+x.d+'</td><td>'+x.dose.toFixed(2)+'</td><td>'+x.cum.toFixed(0)+'</td><td>'+x.sleep.toFixed(1)+'</td><td>'+x.hyd.toFixed(0)+'</td><td>'+x.well.toFixed(1)+'</td><td class="st-'+st(x.risk.all)+'">'+x.risk.all.toFixed(0)+'</td></tr>'}).join("")+'</tbody></table>'}
+  $("#log").innerHTML=h;$("#t-ev").classList.toggle("on",view=="ev");$("#t-dy").classList.toggle("on",view!="ev")}
+function all(){renderCrew();renderCM();renderTL();renderToday();renderLog()}
+function setDay(d){day=d;$("#day").value=d;renderCrew();renderTL();renderToday();renderLog()}
+document.addEventListener("click",function(e){var t=e.target;
+  var cr=t.closest(".crew");if(cr){sel=+cr.dataset.i;renderProfile();all();return}
+  if(t.dataset&&t.dataset.k&&t.closest("#cm")){plan[t.dataset.k]=!plan[t.dataset.k];all();return}
+  if(t.id=="t-ev"){view="ev";renderLog()}if(t.id=="t-dy"){view="dy";renderLog()}
+  if(t.id=="play"){if(timer){clearInterval(timer);timer=null;t.textContent="▶ Play"}else{t.textContent="❚❚ Pause";timer=setInterval(function(){if(day>=N){clearInterval(timer);timer=null;$("#play").textContent="▶ Play";return}setDay(day+1)},60)}}
+  if(t.id=="csv"){var s=run(sel,plan),c=crew[sel],rows=["day,dose_mSv,cum_mSv,sleep_h,bone_pct,muscle_index,hydration,mood,risk_rad,risk_sleep,risk_decon,risk_hyd,risk_psy,risk_overall"].concat(s.map(function(x){var r=x.risk;return [x.d,x.dose,x.cum,x.sleep,x.bone,x.mus,x.hyd,x.well,r.rad,r.sleep,r.decon,r.hyd,r.psy,r.all].map(function(v,i){return i?(+v).toFixed(2):v}).join(",")}));
+    var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["# SIMULATED sensors, MODELED risks. Crew: "+c.name+"\n"+rows.join("\n")],{type:"text/csv"}));a.download="aerovynt_mission_log_"+c.name+".csv";a.click()}});
+$("#day").addEventListener("input",function(){setDay(+this.value)});
+["name","role","mass","sleep","adh"].forEach(function(k){$("#p-"+k).addEventListener("change",function(){var v=this.value;
+  crew[sel][k]=(k=="name"||k=="role")?v.slice(0,24):cl(parseFloat(v)||DEF[sel][k],k=="adh"?0:k=="sleep"?5:40,k=="adh"?100:k=="sleep"?9:130);
+  try{localStorage.setItem("aero_mission_crew",JSON.stringify(crew))}catch(e){}renderProfile();all()})});
+renderProfile();all();
+if("serviceWorker"in navigator&&location.protocol.indexOf("http")==0)navigator.serviceWorker.register("../sw.js").catch(function(){});
+})();
+</script></body></html>

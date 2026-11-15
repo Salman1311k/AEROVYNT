@@ -1,0 +1,3902 @@
+{
+ "engine_version": "3.4",
+ "n_crews": 200,
+ "n_boot": 4000,
+ "stress_seed0": 63000,
+ "frozen": {
+  "ENGINE_VERSION": "3.4",
+  "BASELINE_WINDOW": 14,
+  "BASELINE_LAG": 3,
+  "MIN_BASELINE_DAYS": 7,
+  "MAX_FREEZE_DAYS": 14,
+  "Z_FLAG": 3.0,
+  "CONVERGE_WATCH": 2,
+  "CONVERGE_ACTION": 3,
+  "Z_PERSIST": 2.0,
+  "PERSIST_WATCH_DAYS": 3,
+  "PERSIST_ACTION_DAYS": 5,
+  "CUSUM_K": 1.0,
+  "CUSUM_WATCH_H": 6.0,
+  "CUSUM_ACTION_H": 9.0,
+  "HARD_TEMP_C": 39.0,
+  "SEVERE_SLEEP_H": 4.5,
+  "GLUCOSE_WATCH": 100.0,
+  "GLUCOSE_ACTION": 126.0,
+  "EARTH_FEVER_C": 38.0,
+  "SLEEP_TARGET_H": 7.0,
+  "SLEEP_WINDOW": 7,
+  "SLEEP_MIN_NIGHTS": 4,
+  "SLEEP_ADVISORY_MEAN_H": 6.0,
+  "SLEEP_ALERT_MEAN_H": 5.0,
+  "SLEEP_NIGHT_SHORT_H": 6.0,
+  "SLEEP_SIGMA_FLOOR_H": 0.9,
+  "PE_WINDOW": 28,
+  "PE_MIN": 10,
+  "sha256": "493fe5bc33d58448"
+ },
+ "reproduced_published_benchmark": true,
+ "benchmark_ci": {
+  "Strong Multi-System (1.0×)": {
+   "n_crews": 120,
+   "n_events": 60,
+   "false_alarm_pct": {
+    "earth": [
+     60.4,
+     55.6,
+     64.9
+    ],
+    "earth_no_sleep": [
+     34.0,
+     28.5,
+     39.3
+    ],
+    "naive_personal": [
+     8.3,
+     7.9,
+     8.7
+    ],
+    "watch": [
+     6.7,
+     5.2,
+     8.3
+    ],
+    "action": [
+     1.1,
+     0.2,
+     2.3
+    ],
+    "sleep_advisory": [
+     41.3,
+     34.3,
+     48.2
+    ],
+    "watch_all": [
+     44.0,
+     37.2,
+     50.7
+    ],
+    "action_all": [
+     1.7,
+     0.7,
+     3.0
+    ]
+   },
+   "detected_within_window_pct": {
+    "earth": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "naive_personal": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "watch": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "action": [
+     98.3,
+     95.0,
+     100.0
+    ],
+    "watch_all": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "action_all": [
+     98.3,
+     95.0,
+     100.0
+    ]
+   },
+   "median_delay_days": {
+    "naive_personal": 1.0,
+    "watch": 2.0,
+    "action": 3.0,
+    "watch_all": 0.0,
+    "action_all": 3.0
+   }
+  },
+  "Subtle Multi-System (0.5× + CUSUM)": {
+   "n_crews": 120,
+   "n_events": 60,
+   "false_alarm_pct": {
+    "earth": [
+     61.0,
+     56.0,
+     66.0
+    ],
+    "earth_no_sleep": [
+     32.7,
+     27.6,
+     38.0
+    ],
+    "naive_personal": [
+     8.2,
+     7.8,
+     8.6
+    ],
+    "watch": [
+     5.7,
+     4.6,
+     7.2
+    ],
+    "action": [
+     0.5,
+     0.0,
+     1.5
+    ],
+    "sleep_advisory": [
+     41.3,
+     33.8,
+     48.8
+    ],
+    "watch_all": [
+     44.2,
+     37.1,
+     51.3
+    ],
+    "action_all": [
+     1.0,
+     0.2,
+     2.3
+    ]
+   },
+   "detected_within_window_pct": {
+    "earth": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "naive_personal": [
+     98.3,
+     95.0,
+     100.0
+    ],
+    "watch": [
+     90.0,
+     81.7,
+     96.7
+    ],
+    "action": [
+     21.7,
+     11.7,
+     31.7
+    ],
+    "watch_all": [
+     96.7,
+     91.7,
+     100.0
+    ],
+    "action_all": [
+     33.3,
+     21.7,
+     45.0
+    ]
+   },
+   "median_delay_days": {
+    "naive_personal": 1.0,
+    "watch": 3.0,
+    "action": 6.0,
+    "watch_all": 1.0,
+    "action_all": 6.0
+   }
+  },
+  "Slow Metabolic Drift (14d ramp)": {
+   "n_crews": 120,
+   "n_events": 60,
+   "false_alarm_pct": {
+    "earth": [
+     62.9,
+     58.5,
+     67.4
+    ],
+    "earth_no_sleep": [
+     37.3,
+     32.3,
+     42.3
+    ],
+    "naive_personal": [
+     8.5,
+     8.1,
+     8.9
+    ],
+    "watch": [
+     6.3,
+     5.0,
+     7.8
+    ],
+    "action": [
+     1.1,
+     0.3,
+     2.1
+    ],
+    "sleep_advisory": [
+     42.3,
+     35.7,
+     48.9
+    ],
+    "watch_all": [
+     44.7,
+     38.1,
+     51.0
+    ],
+    "action_all": [
+     2.2,
+     0.9,
+     3.7
+    ]
+   },
+   "detected_within_window_pct": {
+    "earth": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "naive_personal": [
+     95.0,
+     88.3,
+     100.0
+    ],
+    "watch": [
+     80.0,
+     70.0,
+     90.0
+    ],
+    "action": [
+     8.3,
+     1.7,
+     16.7
+    ],
+    "watch_all": [
+     96.7,
+     91.7,
+     100.0
+    ],
+    "action_all": [
+     11.7,
+     5.0,
+     20.0
+    ]
+   },
+   "median_delay_days": {
+    "naive_personal": 2.0,
+    "watch": 5.5,
+    "action": 10.0,
+    "watch_all": 1.0,
+    "action_all": 9.0
+   }
+  },
+  "HR / Autonomic Infection": {
+   "n_crews": 120,
+   "n_events": 60,
+   "false_alarm_pct": {
+    "earth": [
+     62.8,
+     58.4,
+     67.1
+    ],
+    "earth_no_sleep": [
+     33.2,
+     27.9,
+     38.6
+    ],
+    "naive_personal": [
+     8.6,
+     8.2,
+     9.0
+    ],
+    "watch": [
+     5.1,
+     4.4,
+     5.9
+    ],
+    "action": [
+     0.3,
+     0.0,
+     0.9
+    ],
+    "sleep_advisory": [
+     44.4,
+     37.4,
+     51.5
+    ],
+    "watch_all": [
+     46.2,
+     39.5,
+     53.1
+    ],
+    "action_all": [
+     0.5,
+     0.1,
+     1.1
+    ]
+   },
+   "detected_within_window_pct": {
+    "earth": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "naive_personal": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "watch": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "action": [
+     86.7,
+     78.3,
+     95.0
+    ],
+    "watch_all": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "action_all": [
+     86.7,
+     78.3,
+     95.0
+    ]
+   },
+   "median_delay_days": {
+    "naive_personal": 1.0,
+    "watch": 2.0,
+    "action": 4.0,
+    "watch_all": 1.0,
+    "action_all": 4.0
+   }
+  },
+  "Sleep-Only Disruption (Hard Case)": {
+   "n_crews": 120,
+   "n_events": 60,
+   "false_alarm_pct": {
+    "earth": [
+     57.2,
+     52.5,
+     61.7
+    ],
+    "earth_no_sleep": [
+     28.9,
+     24.1,
+     34.1
+    ],
+    "naive_personal": [
+     8.6,
+     8.2,
+     9.0
+    ],
+    "watch": [
+     6.0,
+     4.9,
+     7.3
+    ],
+    "action": [
+     0.5,
+     0.0,
+     1.1
+    ],
+    "sleep_advisory": [
+     39.3,
+     32.5,
+     46.0
+    ],
+    "watch_all": [
+     41.7,
+     35.2,
+     48.2
+    ],
+    "action_all": [
+     0.9,
+     0.3,
+     1.7
+    ]
+   },
+   "detected_within_window_pct": {
+    "earth": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "naive_personal": [
+     81.7,
+     71.7,
+     91.7
+    ],
+    "watch": [
+     83.3,
+     73.3,
+     91.7
+    ],
+    "action": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "watch_all": [
+     100.0,
+     100.0,
+     100.0
+    ],
+    "action_all": [
+     56.7,
+     43.3,
+     68.3
+    ]
+   },
+   "median_delay_days": {
+    "naive_personal": 2.0,
+    "watch": 3.0,
+    "action": null,
+    "watch_all": 0.0,
+    "action_all": 5.0
+   }
+  }
+ },
+ "stress": {
+  "conditions": [
+   "Reference noise (as published)",
+   "Outlier spikes (3% of readings, 4-6 SD)",
+   "Correlated noise (day-to-day memory)",
+   "Slow oscillating trends (25-45 day cycles)",
+   "Sensor drift (random walk)",
+   "Missing telemetry (10% of readings, 3% of days)",
+   "Real-wearable sleep variability (resampled from PMData)",
+   "All of the above at once"
+  ],
+  "scenarios": [
+   "Strong Multi-System (1.0×)",
+   "Subtle Multi-System (0.5× + CUSUM)",
+   "Slow Metabolic Drift (14d ramp)",
+   "HR / Autonomic Infection",
+   "Sleep-Only Disruption (Hard Case)"
+  ],
+  "cells": {
+   "Reference noise (as published)": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       64.6,
+       61.1,
+       68.0
+      ],
+      "earth_no_sleep": [
+       37.5,
+       33.4,
+       41.5
+      ],
+      "naive_personal": [
+       8.3,
+       8.0,
+       8.6
+      ],
+      "watch": [
+       5.8,
+       4.9,
+       6.7
+      ],
+      "action": [
+       0.5,
+       0.0,
+       1.1
+      ],
+      "sleep_advisory": [
+       43.0,
+       37.4,
+       48.6
+      ],
+      "watch_all": [
+       45.5,
+       40.2,
+       51.0
+      ],
+      "action_all": [
+       0.8,
+       0.3,
+       1.5
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       99.0,
+       97.0,
+       100.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 3.0,
+      "watch_all": 1.0,
+      "action_all": 3.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       59.5,
+       55.7,
+       63.2
+      ],
+      "earth_no_sleep": [
+       31.7,
+       27.6,
+       36.1
+      ],
+      "naive_personal": [
+       8.4,
+       8.1,
+       8.7
+      ],
+      "watch": [
+       5.9,
+       4.9,
+       7.0
+      ],
+      "action": [
+       0.7,
+       0.2,
+       1.3
+      ],
+      "sleep_advisory": [
+       40.2,
+       34.9,
+       45.7
+      ],
+      "watch_all": [
+       42.8,
+       37.8,
+       48.2
+      ],
+      "action_all": [
+       1.2,
+       0.6,
+       1.9
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "watch": [
+       90.0,
+       84.0,
+       95.0
+      ],
+      "action": [
+       25.0,
+       17.0,
+       34.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       35.0,
+       26.0,
+       44.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 3.0,
+      "action": 5.0,
+      "watch_all": 0.0,
+      "action_all": 6.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       62.9,
+       59.5,
+       66.3
+      ],
+      "earth_no_sleep": [
+       34.6,
+       30.6,
+       38.6
+      ],
+      "naive_personal": [
+       8.7,
+       8.4,
+       9.0
+      ],
+      "watch": [
+       6.8,
+       5.9,
+       8.0
+      ],
+      "action": [
+       0.5,
+       0.1,
+       1.0
+      ],
+      "sleep_advisory": [
+       42.6,
+       37.1,
+       47.9
+      ],
+      "watch_all": [
+       45.6,
+       40.6,
+       50.7
+      ],
+      "action_all": [
+       1.5,
+       0.7,
+       2.6
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       92.0,
+       86.0,
+       97.0
+      ],
+      "watch": [
+       79.0,
+       71.0,
+       87.0
+      ],
+      "action": [
+       15.0,
+       8.0,
+       22.0
+      ],
+      "watch_all": [
+       92.0,
+       86.0,
+       97.0
+      ],
+      "action_all": [
+       18.0,
+       11.0,
+       26.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 5.0,
+      "action": 8.0,
+      "watch_all": 0.0,
+      "action_all": 7.0
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       61.1,
+       57.3,
+       64.8
+      ],
+      "earth_no_sleep": [
+       33.5,
+       29.5,
+       37.4
+      ],
+      "naive_personal": [
+       8.5,
+       8.3,
+       8.9
+      ],
+      "watch": [
+       5.5,
+       4.6,
+       6.5
+      ],
+      "action": [
+       0.3,
+       0.0,
+       0.8
+      ],
+      "sleep_advisory": [
+       41.1,
+       35.4,
+       46.7
+      ],
+      "watch_all": [
+       43.4,
+       38.0,
+       48.7
+      ],
+      "action_all": [
+       0.7,
+       0.2,
+       1.3
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action": [
+       81.0,
+       73.0,
+       88.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       81.0,
+       73.0,
+       88.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 4.0,
+      "watch_all": 1.0,
+      "action_all": 4.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       62.8,
+       59.2,
+       66.1
+      ],
+      "earth_no_sleep": [
+       37.3,
+       33.4,
+       41.2
+      ],
+      "naive_personal": [
+       8.4,
+       8.2,
+       8.8
+      ],
+      "watch": [
+       6.0,
+       5.2,
+       6.9
+      ],
+      "action": [
+       0.4,
+       0.0,
+       0.9
+      ],
+      "sleep_advisory": [
+       42.0,
+       36.8,
+       47.1
+      ],
+      "watch_all": [
+       44.6,
+       39.5,
+       49.6
+      ],
+      "action_all": [
+       0.6,
+       0.2,
+       1.1
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       80.0,
+       72.0,
+       87.0
+      ],
+      "watch": [
+       84.0,
+       76.0,
+       91.0
+      ],
+      "action": [
+       6.0,
+       2.0,
+       11.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       66.0,
+       56.0,
+       75.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 3.0,
+      "action": 3.5,
+      "watch_all": 0.0,
+      "action_all": 5.5
+     }
+    }
+   },
+   "Outlier spikes (3% of readings, 4-6 SD)": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       65.0,
+       61.7,
+       68.3
+      ],
+      "earth_no_sleep": [
+       38.1,
+       34.0,
+       41.9
+      ],
+      "naive_personal": [
+       12.5,
+       12.1,
+       12.9
+      ],
+      "watch": [
+       11.3,
+       10.0,
+       12.9
+      ],
+      "action": [
+       1.7,
+       0.7,
+       3.0
+      ],
+      "sleep_advisory": [
+       43.6,
+       38.1,
+       49.1
+      ],
+      "watch_all": [
+       48.9,
+       43.9,
+       53.9
+      ],
+      "action_all": [
+       2.3,
+       1.2,
+       3.6
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       98.0,
+       95.0,
+       100.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 1.0,
+      "action": 3.0,
+      "watch_all": 0.0,
+      "action_all": 3.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       60.3,
+       56.6,
+       63.9
+      ],
+      "earth_no_sleep": [
+       32.5,
+       28.5,
+       36.9
+      ],
+      "naive_personal": [
+       12.7,
+       12.3,
+       13.1
+      ],
+      "watch": [
+       11.3,
+       10.2,
+       12.5
+      ],
+      "action": [
+       1.5,
+       0.7,
+       2.3
+      ],
+      "sleep_advisory": [
+       40.9,
+       35.8,
+       46.3
+      ],
+      "watch_all": [
+       46.6,
+       41.9,
+       51.6
+      ],
+      "action_all": [
+       2.0,
+       1.2,
+       3.0
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "watch": [
+       91.0,
+       85.0,
+       96.0
+      ],
+      "action": [
+       28.0,
+       19.0,
+       37.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       39.0,
+       30.0,
+       49.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 2.0,
+      "action": 5.0,
+      "watch_all": 0.0,
+      "action_all": 5.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       63.6,
+       60.3,
+       66.8
+      ],
+      "earth_no_sleep": [
+       35.3,
+       31.4,
+       39.3
+      ],
+      "naive_personal": [
+       12.7,
+       12.4,
+       13.1
+      ],
+      "watch": [
+       11.9,
+       10.8,
+       13.1
+      ],
+      "action": [
+       1.2,
+       0.6,
+       1.9
+      ],
+      "sleep_advisory": [
+       42.9,
+       37.9,
+       48.1
+      ],
+      "watch_all": [
+       48.4,
+       43.7,
+       53.0
+      ],
+      "action_all": [
+       2.2,
+       1.2,
+       3.4
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       93.0,
+       88.0,
+       97.0
+      ],
+      "watch": [
+       88.0,
+       81.0,
+       94.0
+      ],
+      "action": [
+       15.0,
+       8.0,
+       23.0
+      ],
+      "watch_all": [
+       94.0,
+       89.0,
+       98.0
+      ],
+      "action_all": [
+       18.0,
+       11.0,
+       26.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 3.0,
+      "action": 7.0,
+      "watch_all": 0.0,
+      "action_all": 5.5
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       61.9,
+       58.2,
+       65.5
+      ],
+      "earth_no_sleep": [
+       34.4,
+       30.6,
+       38.3
+      ],
+      "naive_personal": [
+       12.9,
+       12.5,
+       13.3
+      ],
+      "watch": [
+       11.3,
+       10.0,
+       12.8
+      ],
+      "action": [
+       1.5,
+       0.6,
+       2.5
+      ],
+      "sleep_advisory": [
+       41.4,
+       35.9,
+       46.6
+      ],
+      "watch_all": [
+       46.7,
+       41.7,
+       51.6
+      ],
+      "action_all": [
+       2.1,
+       1.2,
+       3.1
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "watch": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action": [
+       85.0,
+       78.0,
+       92.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       85.0,
+       78.0,
+       92.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 4.0,
+      "watch_all": 0.0,
+      "action_all": 4.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       63.3,
+       59.8,
+       66.5
+      ],
+      "earth_no_sleep": [
+       38.0,
+       34.1,
+       41.8
+      ],
+      "naive_personal": [
+       12.6,
+       12.2,
+       13.0
+      ],
+      "watch": [
+       12.6,
+       11.1,
+       14.2
+      ],
+      "action": [
+       2.1,
+       1.0,
+       3.6
+      ],
+      "sleep_advisory": [
+       42.4,
+       37.4,
+       47.4
+      ],
+      "watch_all": [
+       48.0,
+       43.4,
+       52.6
+      ],
+      "action_all": [
+       2.6,
+       1.4,
+       4.0
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       87.0,
+       80.0,
+       93.0
+      ],
+      "watch": [
+       89.0,
+       82.0,
+       95.0
+      ],
+      "action": [
+       8.0,
+       3.0,
+       14.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       69.0,
+       60.0,
+       78.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 3.0,
+      "action": 4.0,
+      "watch_all": 0.0,
+      "action_all": 5.0
+     }
+    }
+   },
+   "Correlated noise (day-to-day memory)": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       65.3,
+       62.2,
+       68.3
+      ],
+      "earth_no_sleep": [
+       38.0,
+       33.9,
+       41.8
+      ],
+      "naive_personal": [
+       8.6,
+       8.3,
+       9.0
+      ],
+      "watch": [
+       18.2,
+       15.7,
+       20.8
+      ],
+      "action": [
+       8.0,
+       5.8,
+       10.4
+      ],
+      "sleep_advisory": [
+       43.6,
+       38.7,
+       48.5
+      ],
+      "watch_all": [
+       53.7,
+       49.5,
+       58.1
+      ],
+      "action_all": [
+       9.4,
+       7.1,
+       11.8
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       95.0,
+       90.0,
+       99.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       99.0,
+       97.0,
+       100.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 1.0,
+      "action": 3.0,
+      "watch_all": 0.0,
+      "action_all": 3.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       61.2,
+       57.9,
+       64.4
+      ],
+      "earth_no_sleep": [
+       32.3,
+       28.3,
+       36.5
+      ],
+      "naive_personal": [
+       9.0,
+       8.7,
+       9.3
+      ],
+      "watch": [
+       19.5,
+       16.7,
+       22.4
+      ],
+      "action": [
+       9.4,
+       7.1,
+       11.9
+      ],
+      "sleep_advisory": [
+       40.5,
+       36.0,
+       45.2
+      ],
+      "watch_all": [
+       51.5,
+       47.5,
+       55.7
+      ],
+      "action_all": [
+       10.4,
+       8.0,
+       12.8
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       94.0,
+       89.0,
+       98.0
+      ],
+      "watch": [
+       90.0,
+       84.0,
+       96.0
+      ],
+      "action": [
+       42.0,
+       32.0,
+       52.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       52.0,
+       42.0,
+       62.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 2.0,
+      "action": 4.0,
+      "watch_all": 0.0,
+      "action_all": 4.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       64.3,
+       61.3,
+       67.4
+      ],
+      "earth_no_sleep": [
+       35.2,
+       31.4,
+       39.0
+      ],
+      "naive_personal": [
+       9.0,
+       8.7,
+       9.2
+      ],
+      "watch": [
+       22.3,
+       19.4,
+       25.1
+      ],
+      "action": [
+       11.9,
+       9.4,
+       14.4
+      ],
+      "sleep_advisory": [
+       44.5,
+       40.0,
+       49.1
+      ],
+      "watch_all": [
+       55.8,
+       51.6,
+       60.1
+      ],
+      "action_all": [
+       13.5,
+       11.0,
+       16.3
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       93.0,
+       88.0,
+       98.0
+      ],
+      "watch": [
+       83.0,
+       75.0,
+       90.0
+      ],
+      "action": [
+       30.0,
+       21.0,
+       39.0
+      ],
+      "watch_all": [
+       92.0,
+       86.0,
+       97.0
+      ],
+      "action_all": [
+       36.0,
+       27.0,
+       45.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 3.0,
+      "action": 3.5,
+      "watch_all": 0.0,
+      "action_all": 4.0
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       62.9,
+       59.5,
+       66.2
+      ],
+      "earth_no_sleep": [
+       34.3,
+       30.6,
+       38.2
+      ],
+      "naive_personal": [
+       9.2,
+       8.8,
+       9.5
+      ],
+      "watch": [
+       18.3,
+       15.7,
+       21.1
+      ],
+      "action": [
+       8.4,
+       6.1,
+       10.8
+      ],
+      "sleep_advisory": [
+       42.7,
+       37.8,
+       47.5
+      ],
+      "watch_all": [
+       52.3,
+       47.9,
+       56.7
+      ],
+      "action_all": [
+       9.7,
+       7.4,
+       12.1
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "watch": [
+       94.0,
+       89.0,
+       98.0
+      ],
+      "action": [
+       61.0,
+       51.0,
+       71.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       63.0,
+       53.0,
+       73.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 2.0,
+      "action": 4.0,
+      "watch_all": 1.0,
+      "action_all": 4.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       63.8,
+       60.6,
+       66.9
+      ],
+      "earth_no_sleep": [
+       37.3,
+       33.5,
+       41.2
+      ],
+      "naive_personal": [
+       8.8,
+       8.4,
+       9.1
+      ],
+      "watch": [
+       17.2,
+       14.8,
+       19.8
+      ],
+      "action": [
+       7.2,
+       5.1,
+       9.4
+      ],
+      "sleep_advisory": [
+       42.5,
+       38.1,
+       46.8
+      ],
+      "watch_all": [
+       51.4,
+       47.3,
+       55.3
+      ],
+      "action_all": [
+       8.2,
+       6.2,
+       10.4
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       78.0,
+       70.0,
+       85.0
+      ],
+      "watch": [
+       93.0,
+       88.0,
+       98.0
+      ],
+      "action": [
+       14.0,
+       8.0,
+       21.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       76.0,
+       67.0,
+       84.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 3.0,
+      "watch": 2.0,
+      "action": 3.5,
+      "watch_all": 0.0,
+      "action_all": 5.0
+     }
+    }
+   },
+   "Slow oscillating trends (25-45 day cycles)": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       66.9,
+       64.1,
+       69.6
+      ],
+      "earth_no_sleep": [
+       39.0,
+       35.0,
+       42.7
+      ],
+      "naive_personal": [
+       10.8,
+       10.4,
+       11.1
+      ],
+      "watch": [
+       47.9,
+       43.7,
+       52.0
+      ],
+      "action": [
+       36.3,
+       32.1,
+       40.5
+      ],
+      "sleep_advisory": [
+       44.6,
+       41.2,
+       48.0
+      ],
+      "watch_all": [
+       70.2,
+       67.1,
+       73.3
+      ],
+      "action_all": [
+       39.1,
+       34.9,
+       43.3
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       99.0,
+       97.0,
+       100.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 0.0,
+      "action": 2.0,
+      "watch_all": 0.0,
+      "action_all": 2.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       63.1,
+       60.2,
+       65.9
+      ],
+      "earth_no_sleep": [
+       33.8,
+       30.0,
+       38.0
+      ],
+      "naive_personal": [
+       11.1,
+       10.7,
+       11.4
+      ],
+      "watch": [
+       45.9,
+       41.5,
+       50.6
+      ],
+      "action": [
+       34.9,
+       30.4,
+       39.5
+      ],
+      "sleep_advisory": [
+       44.6,
+       41.7,
+       47.6
+      ],
+      "watch_all": [
+       68.3,
+       64.9,
+       71.8
+      ],
+      "action_all": [
+       37.3,
+       33.0,
+       41.6
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       94.0,
+       89.0,
+       98.0
+      ],
+      "watch": [
+       93.0,
+       88.0,
+       98.0
+      ],
+      "action": [
+       65.0,
+       55.0,
+       74.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       73.0,
+       64.0,
+       82.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 0.0,
+      "action": 0.0,
+      "watch_all": 0.0,
+      "action_all": 1.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       65.6,
+       62.8,
+       68.2
+      ],
+      "earth_no_sleep": [
+       36.3,
+       32.6,
+       40.1
+      ],
+      "naive_personal": [
+       11.2,
+       10.9,
+       11.6
+      ],
+      "watch": [
+       47.8,
+       43.5,
+       52.2
+      ],
+      "action": [
+       36.3,
+       32.0,
+       40.7
+      ],
+      "sleep_advisory": [
+       46.1,
+       43.0,
+       49.2
+      ],
+      "watch_all": [
+       71.2,
+       68.0,
+       74.4
+      ],
+      "action_all": [
+       39.2,
+       35.0,
+       43.4
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       83.0,
+       76.0,
+       90.0
+      ],
+      "watch": [
+       90.0,
+       84.0,
+       96.0
+      ],
+      "action": [
+       56.0,
+       46.0,
+       65.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       66.0,
+       57.0,
+       75.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 3.0,
+      "watch": 0.0,
+      "action": 0.0,
+      "watch_all": 0.0,
+      "action_all": 0.0
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       64.1,
+       61.2,
+       66.9
+      ],
+      "earth_no_sleep": [
+       35.4,
+       31.9,
+       39.1
+      ],
+      "naive_personal": [
+       11.2,
+       10.8,
+       11.6
+      ],
+      "watch": [
+       43.1,
+       38.6,
+       47.8
+      ],
+      "action": [
+       31.8,
+       27.5,
+       36.4
+      ],
+      "sleep_advisory": [
+       43.8,
+       40.2,
+       47.2
+      ],
+      "watch_all": [
+       66.9,
+       63.3,
+       70.5
+      ],
+      "action_all": [
+       35.0,
+       30.8,
+       39.3
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       97.0,
+       93.0,
+       100.0
+      ],
+      "watch": [
+       95.0,
+       90.0,
+       99.0
+      ],
+      "action": [
+       81.0,
+       73.0,
+       88.0
+      ],
+      "watch_all": [
+       97.0,
+       93.0,
+       100.0
+      ],
+      "action_all": [
+       84.0,
+       76.0,
+       91.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 1.0,
+      "action": 2.0,
+      "watch_all": 0.0,
+      "action_all": 2.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       65.6,
+       62.8,
+       68.3
+      ],
+      "earth_no_sleep": [
+       38.4,
+       34.7,
+       42.1
+      ],
+      "naive_personal": [
+       10.9,
+       10.6,
+       11.3
+      ],
+      "watch": [
+       45.7,
+       41.6,
+       49.6
+      ],
+      "action": [
+       34.0,
+       30.1,
+       37.7
+      ],
+      "sleep_advisory": [
+       45.8,
+       42.7,
+       48.7
+      ],
+      "watch_all": [
+       69.3,
+       66.2,
+       72.3
+      ],
+      "action_all": [
+       36.1,
+       32.1,
+       39.9
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       84.0,
+       76.0,
+       91.0
+      ],
+      "watch": [
+       90.0,
+       84.0,
+       96.0
+      ],
+      "action": [
+       37.0,
+       28.0,
+       46.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       76.0,
+       68.0,
+       84.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 2.0,
+      "action": 0.0,
+      "watch_all": 0.0,
+      "action_all": 3.0
+     }
+    }
+   },
+   "Sensor drift (random walk)": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       66.1,
+       62.5,
+       69.6
+      ],
+      "earth_no_sleep": [
+       38.0,
+       33.7,
+       42.0
+      ],
+      "naive_personal": [
+       8.6,
+       8.3,
+       8.9
+      ],
+      "watch": [
+       7.8,
+       6.5,
+       9.2
+      ],
+      "action": [
+       1.0,
+       0.3,
+       2.0
+      ],
+      "sleep_advisory": [
+       43.2,
+       37.9,
+       48.7
+      ],
+      "watch_all": [
+       46.4,
+       41.3,
+       51.6
+      ],
+      "action_all": [
+       5.6,
+       3.7,
+       7.8
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       100.0,
+       100.0,
+       100.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 3.0,
+      "watch_all": 0.0,
+      "action_all": 3.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       61.5,
+       57.8,
+       65.2
+      ],
+      "earth_no_sleep": [
+       32.6,
+       28.6,
+       37.0
+      ],
+      "naive_personal": [
+       8.7,
+       8.4,
+       9.1
+      ],
+      "watch": [
+       6.9,
+       5.7,
+       8.3
+      ],
+      "action": [
+       1.0,
+       0.4,
+       1.9
+      ],
+      "sleep_advisory": [
+       39.5,
+       34.5,
+       44.5
+      ],
+      "watch_all": [
+       42.7,
+       38.0,
+       47.5
+      ],
+      "action_all": [
+       2.9,
+       1.7,
+       4.2
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       94.0,
+       89.0,
+       98.0
+      ],
+      "watch": [
+       87.0,
+       80.0,
+       93.0
+      ],
+      "action": [
+       29.0,
+       20.0,
+       38.0
+      ],
+      "watch_all": [
+       97.0,
+       93.0,
+       100.0
+      ],
+      "action_all": [
+       44.0,
+       35.0,
+       54.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 5.0,
+      "watch_all": 0.0,
+      "action_all": 5.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       64.5,
+       60.9,
+       68.2
+      ],
+      "earth_no_sleep": [
+       35.1,
+       31.1,
+       39.2
+      ],
+      "naive_personal": [
+       9.2,
+       8.9,
+       9.5
+      ],
+      "watch": [
+       9.3,
+       7.8,
+       11.1
+      ],
+      "action": [
+       0.5,
+       0.1,
+       1.1
+      ],
+      "sleep_advisory": [
+       45.0,
+       39.8,
+       50.6
+      ],
+      "watch_all": [
+       48.5,
+       43.5,
+       53.8
+      ],
+      "action_all": [
+       6.1,
+       4.0,
+       8.7
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "naive_personal": [
+       91.0,
+       85.0,
+       96.0
+      ],
+      "watch": [
+       81.0,
+       73.0,
+       88.0
+      ],
+      "action": [
+       10.0,
+       5.0,
+       16.0
+      ],
+      "watch_all": [
+       90.0,
+       84.0,
+       95.0
+      ],
+      "action_all": [
+       28.0,
+       19.0,
+       37.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 3.0,
+      "action": 7.0,
+      "watch_all": 0.0,
+      "action_all": 0.5
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       65.5,
+       62.0,
+       68.8
+      ],
+      "earth_no_sleep": [
+       35.7,
+       31.8,
+       39.7
+      ],
+      "naive_personal": [
+       9.0,
+       8.7,
+       9.4
+      ],
+      "watch": [
+       7.3,
+       6.1,
+       8.7
+      ],
+      "action": [
+       0.6,
+       0.0,
+       1.7
+      ],
+      "sleep_advisory": [
+       46.8,
+       41.4,
+       52.1
+      ],
+      "watch_all": [
+       49.6,
+       44.4,
+       54.6
+      ],
+      "action_all": [
+       4.2,
+       2.6,
+       6.1
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "watch": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action": [
+       88.0,
+       81.0,
+       94.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       88.0,
+       81.0,
+       94.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 4.0,
+      "watch_all": 1.0,
+      "action_all": 4.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       63.0,
+       59.3,
+       66.6
+      ],
+      "earth_no_sleep": [
+       36.9,
+       33.0,
+       40.9
+      ],
+      "naive_personal": [
+       8.6,
+       8.3,
+       8.9
+      ],
+      "watch": [
+       7.6,
+       6.5,
+       8.9
+      ],
+      "action": [
+       0.7,
+       0.3,
+       1.3
+      ],
+      "sleep_advisory": [
+       43.8,
+       38.7,
+       48.8
+      ],
+      "watch_all": [
+       46.6,
+       41.5,
+       51.4
+      ],
+      "action_all": [
+       4.2,
+       2.6,
+       6.2
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       81.0,
+       73.0,
+       88.0
+      ],
+      "watch": [
+       79.0,
+       71.0,
+       87.0
+      ],
+      "action": [
+       4.0,
+       1.0,
+       8.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       60.0,
+       50.0,
+       70.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 3.0,
+      "watch": 3.0,
+      "action": 5.5,
+      "watch_all": 0.0,
+      "action_all": 4.0
+     }
+    }
+   },
+   "Missing telemetry (10% of readings, 3% of days)": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       57.7,
+       54.5,
+       60.8
+      ],
+      "earth_no_sleep": [
+       32.9,
+       29.2,
+       36.4
+      ],
+      "naive_personal": [
+       8.1,
+       7.8,
+       8.4
+      ],
+      "watch": [
+       5.2,
+       4.4,
+       6.0
+      ],
+      "action": [
+       0.5,
+       0.0,
+       1.2
+      ],
+      "sleep_advisory": [
+       42.3,
+       36.8,
+       47.7
+      ],
+      "watch_all": [
+       44.4,
+       39.1,
+       49.7
+      ],
+      "action_all": [
+       0.9,
+       0.3,
+       1.6
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       94.0,
+       89.0,
+       98.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       98.0,
+       95.0,
+       100.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 3.0,
+      "watch_all": 1.0,
+      "action_all": 3.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       53.2,
+       49.7,
+       56.6
+      ],
+      "earth_no_sleep": [
+       27.9,
+       24.2,
+       31.8
+      ],
+      "naive_personal": [
+       8.1,
+       7.8,
+       8.4
+      ],
+      "watch": [
+       5.0,
+       4.2,
+       6.2
+      ],
+      "action": [
+       0.4,
+       0.0,
+       1.1
+      ],
+      "sleep_advisory": [
+       40.1,
+       34.8,
+       45.6
+      ],
+      "watch_all": [
+       42.6,
+       37.5,
+       47.9
+      ],
+      "action_all": [
+       1.0,
+       0.4,
+       1.8
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "watch": [
+       84.0,
+       76.0,
+       91.0
+      ],
+      "action": [
+       11.0,
+       5.0,
+       17.0
+      ],
+      "watch_all": [
+       96.0,
+       92.0,
+       99.0
+      ],
+      "action_all": [
+       27.0,
+       18.0,
+       35.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 3.0,
+      "action": 6.0,
+      "watch_all": 0.0,
+      "action_all": 6.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       56.4,
+       53.2,
+       59.5
+      ],
+      "earth_no_sleep": [
+       30.5,
+       26.9,
+       34.2
+      ],
+      "naive_personal": [
+       8.5,
+       8.2,
+       8.8
+      ],
+      "watch": [
+       5.4,
+       4.7,
+       6.2
+      ],
+      "action": [
+       0.0,
+       0.0,
+       0.1
+      ],
+      "sleep_advisory": [
+       42.5,
+       37.2,
+       47.7
+      ],
+      "watch_all": [
+       44.8,
+       39.7,
+       49.8
+      ],
+      "action_all": [
+       1.1,
+       0.3,
+       2.2
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       94.0,
+       89.0,
+       98.0
+      ],
+      "watch": [
+       69.0,
+       60.0,
+       78.0
+      ],
+      "action": [
+       6.0,
+       2.0,
+       11.0
+      ],
+      "watch_all": [
+       87.0,
+       80.0,
+       93.0
+      ],
+      "action_all": [
+       9.0,
+       4.0,
+       15.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 4.0,
+      "action": 6.5,
+      "watch_all": 0.0,
+      "action_all": 2.0
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       54.5,
+       51.0,
+       58.0
+      ],
+      "earth_no_sleep": [
+       29.3,
+       25.8,
+       32.8
+      ],
+      "naive_personal": [
+       8.2,
+       7.9,
+       8.5
+      ],
+      "watch": [
+       4.9,
+       4.2,
+       5.6
+      ],
+      "action": [
+       0.0,
+       0.0,
+       0.1
+      ],
+      "sleep_advisory": [
+       40.7,
+       35.2,
+       46.3
+      ],
+      "watch_all": [
+       42.7,
+       37.3,
+       48.0
+      ],
+      "action_all": [
+       0.6,
+       0.3,
+       0.9
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       96.0,
+       92.0,
+       99.0
+      ],
+      "action": [
+       70.0,
+       61.0,
+       79.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       70.0,
+       61.0,
+       79.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 4.0,
+      "watch_all": 1.0,
+      "action_all": 4.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       56.2,
+       52.9,
+       59.3
+      ],
+      "earth_no_sleep": [
+       32.8,
+       29.3,
+       36.2
+      ],
+      "naive_personal": [
+       8.3,
+       8.0,
+       8.6
+      ],
+      "watch": [
+       5.2,
+       4.6,
+       5.8
+      ],
+      "action": [
+       0.0,
+       0.0,
+       0.1
+      ],
+      "sleep_advisory": [
+       41.9,
+       36.8,
+       46.8
+      ],
+      "watch_all": [
+       44.1,
+       39.2,
+       48.9
+      ],
+      "action_all": [
+       0.4,
+       0.2,
+       0.6
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       77.0,
+       69.0,
+       85.0
+      ],
+      "watch": [
+       83.0,
+       75.0,
+       90.0
+      ],
+      "action": [
+       2.0,
+       0.0,
+       5.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       67.0,
+       57.0,
+       76.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 3.0,
+      "watch": 3.0,
+      "action": 5.0,
+      "watch_all": 0.0,
+      "action_all": 5.0
+     }
+    }
+   },
+   "Real-wearable sleep variability (resampled from PMData)": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       65.4,
+       62.7,
+       68.0
+      ],
+      "earth_no_sleep": [
+       37.4,
+       33.2,
+       41.4
+      ],
+      "naive_personal": [
+       9.3,
+       9.0,
+       9.6
+      ],
+      "watch": [
+       14.1,
+       13.0,
+       15.2
+      ],
+      "action": [
+       0.9,
+       0.3,
+       1.7
+      ],
+      "sleep_advisory": [
+       38.5,
+       35.1,
+       42.0
+      ],
+      "watch_all": [
+       44.5,
+       41.3,
+       47.7
+      ],
+      "action_all": [
+       5.0,
+       4.0,
+       6.1
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       99.0,
+       97.0,
+       100.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 1.0,
+      "action": 3.0,
+      "watch_all": 1.0,
+      "action_all": 3.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       62.1,
+       59.4,
+       64.9
+      ],
+      "earth_no_sleep": [
+       31.5,
+       27.4,
+       35.9
+      ],
+      "naive_personal": [
+       9.1,
+       8.7,
+       9.4
+      ],
+      "watch": [
+       13.7,
+       12.6,
+       14.9
+      ],
+      "action": [
+       0.9,
+       0.4,
+       1.5
+      ],
+      "sleep_advisory": [
+       36.6,
+       33.5,
+       39.8
+      ],
+      "watch_all": [
+       42.4,
+       39.4,
+       45.4
+      ],
+      "action_all": [
+       4.9,
+       3.8,
+       6.0
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action": [
+       26.0,
+       18.0,
+       35.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       43.0,
+       33.0,
+       53.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 5.0,
+      "watch_all": 1.0,
+      "action_all": 5.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       63.9,
+       61.2,
+       66.6
+      ],
+      "earth_no_sleep": [
+       34.4,
+       30.4,
+       38.4
+      ],
+      "naive_personal": [
+       9.6,
+       9.3,
+       10.0
+      ],
+      "watch": [
+       14.0,
+       13.0,
+       15.1
+      ],
+      "action": [
+       0.4,
+       0.0,
+       0.9
+      ],
+      "sleep_advisory": [
+       37.6,
+       34.4,
+       40.8
+      ],
+      "watch_all": [
+       43.3,
+       40.2,
+       46.3
+      ],
+      "action_all": [
+       4.9,
+       3.8,
+       6.0
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       93.0,
+       88.0,
+       98.0
+      ],
+      "watch": [
+       93.0,
+       88.0,
+       98.0
+      ],
+      "action": [
+       11.0,
+       5.0,
+       17.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       30.0,
+       21.0,
+       39.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 3.0,
+      "action": 8.0,
+      "watch_all": 0.5,
+      "action_all": 7.0
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       62.6,
+       59.7,
+       65.3
+      ],
+      "earth_no_sleep": [
+       33.2,
+       29.2,
+       37.3
+      ],
+      "naive_personal": [
+       9.5,
+       9.2,
+       9.8
+      ],
+      "watch": [
+       14.2,
+       13.1,
+       15.4
+      ],
+      "action": [
+       0.8,
+       0.3,
+       1.4
+      ],
+      "sleep_advisory": [
+       37.5,
+       34.0,
+       41.0
+      ],
+      "watch_all": [
+       43.4,
+       40.0,
+       46.6
+      ],
+      "action_all": [
+       5.2,
+       4.1,
+       6.4
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       80.0,
+       72.0,
+       87.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       82.0,
+       74.0,
+       89.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 2.0,
+      "action": 4.0,
+      "watch_all": 0.0,
+      "action_all": 4.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       64.4,
+       61.7,
+       67.0
+      ],
+      "earth_no_sleep": [
+       37.3,
+       33.4,
+       41.2
+      ],
+      "naive_personal": [
+       9.3,
+       9.0,
+       9.6
+      ],
+      "watch": [
+       13.6,
+       12.5,
+       14.7
+      ],
+      "action": [
+       0.7,
+       0.2,
+       1.6
+      ],
+      "sleep_advisory": [
+       37.2,
+       34.2,
+       40.0
+      ],
+      "watch_all": [
+       42.9,
+       40.0,
+       45.7
+      ],
+      "action_all": [
+       4.2,
+       3.3,
+       5.4
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       83.0,
+       75.0,
+       90.0
+      ],
+      "watch": [
+       97.0,
+       93.0,
+       100.0
+      ],
+      "action": [
+       7.0,
+       2.0,
+       12.0
+      ],
+      "watch_all": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action_all": [
+       60.0,
+       50.0,
+       70.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 3.0,
+      "watch": 2.0,
+      "action": 5.0,
+      "watch_all": 0.0,
+      "action_all": 4.0
+     }
+    }
+   },
+   "All of the above at once": {
+    "Strong Multi-System (1.0×)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       60.9,
+       58.6,
+       63.1
+      ],
+      "earth_no_sleep": [
+       36.2,
+       32.8,
+       39.5
+      ],
+      "naive_personal": [
+       11.4,
+       11.0,
+       11.8
+      ],
+      "watch": [
+       47.5,
+       44.2,
+       50.9
+      ],
+      "action": [
+       30.2,
+       26.3,
+       34.0
+      ],
+      "sleep_advisory": [
+       40.8,
+       37.8,
+       44.0
+      ],
+      "watch_all": [
+       66.9,
+       63.9,
+       69.8
+      ],
+      "action_all": [
+       37.6,
+       33.9,
+       41.3
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "watch": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action": [
+       82.0,
+       74.0,
+       89.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       94.0,
+       89.0,
+       98.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 1.0,
+      "action": 3.0,
+      "watch_all": 0.0,
+      "action_all": 2.0
+     }
+    },
+    "Subtle Multi-System (0.5× + CUSUM)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       58.8,
+       56.5,
+       61.0
+      ],
+      "earth_no_sleep": [
+       32.5,
+       29.3,
+       35.9
+      ],
+      "naive_personal": [
+       11.8,
+       11.5,
+       12.2
+      ],
+      "watch": [
+       50.2,
+       46.8,
+       53.6
+      ],
+      "action": [
+       32.4,
+       28.5,
+       36.4
+      ],
+      "sleep_advisory": [
+       39.8,
+       37.1,
+       42.3
+      ],
+      "watch_all": [
+       67.7,
+       64.9,
+       70.5
+      ],
+      "action_all": [
+       40.1,
+       36.5,
+       43.8
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       92.0,
+       86.0,
+       97.0
+      ],
+      "watch": [
+       91.0,
+       85.0,
+       96.0
+      ],
+      "action": [
+       46.0,
+       36.0,
+       56.0
+      ],
+      "watch_all": [
+       97.0,
+       93.0,
+       100.0
+      ],
+      "action_all": [
+       63.0,
+       54.0,
+       73.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 2.0,
+      "watch": 1.0,
+      "action": 0.0,
+      "watch_all": 0.0,
+      "action_all": 0.0
+     }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       60.5,
+       58.1,
+       62.8
+      ],
+      "earth_no_sleep": [
+       34.1,
+       30.8,
+       37.3
+      ],
+      "naive_personal": [
+       11.9,
+       11.6,
+       12.3
+      ],
+      "watch": [
+       47.9,
+       44.4,
+       51.3
+      ],
+      "action": [
+       30.2,
+       26.3,
+       34.0
+      ],
+      "sleep_advisory": [
+       40.9,
+       37.8,
+       44.0
+      ],
+      "watch_all": [
+       66.6,
+       63.6,
+       69.6
+      ],
+      "action_all": [
+       38.1,
+       34.4,
+       41.8
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "naive_personal": [
+       87.0,
+       80.0,
+       93.0
+      ],
+      "watch": [
+       95.0,
+       90.0,
+       99.0
+      ],
+      "action": [
+       46.0,
+       36.0,
+       56.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       59.0,
+       49.0,
+       68.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 3.0,
+      "watch": 1.0,
+      "action": 0.0,
+      "watch_all": 0.0,
+      "action_all": 0.0
+     }
+    },
+    "HR / Autonomic Infection": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       60.1,
+       57.9,
+       62.2
+      ],
+      "earth_no_sleep": [
+       34.1,
+       31.1,
+       37.1
+      ],
+      "naive_personal": [
+       11.9,
+       11.5,
+       12.3
+      ],
+      "watch": [
+       50.3,
+       47.1,
+       53.5
+      ],
+      "action": [
+       31.8,
+       28.2,
+       35.4
+      ],
+      "sleep_advisory": [
+       41.5,
+       38.4,
+       44.4
+      ],
+      "watch_all": [
+       68.8,
+       66.2,
+       71.3
+      ],
+      "action_all": [
+       40.0,
+       36.7,
+       43.3
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       93.0,
+       88.0,
+       98.0
+      ],
+      "watch": [
+       96.0,
+       92.0,
+       99.0
+      ],
+      "action": [
+       67.0,
+       58.0,
+       76.0
+      ],
+      "watch_all": [
+       99.0,
+       97.0,
+       100.0
+      ],
+      "action_all": [
+       76.0,
+       67.0,
+       84.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 1.0,
+      "watch": 0.0,
+      "action": 2.0,
+      "watch_all": 0.0,
+      "action_all": 0.0
+     }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+     "n_crews": 200,
+     "n_events": 100,
+     "false_alarm_pct": {
+      "earth": [
+       60.9,
+       58.4,
+       63.2
+      ],
+      "earth_no_sleep": [
+       35.8,
+       32.6,
+       39.1
+      ],
+      "naive_personal": [
+       12.1,
+       11.7,
+       12.4
+      ],
+      "watch": [
+       48.9,
+       45.3,
+       52.5
+      ],
+      "action": [
+       31.1,
+       27.0,
+       35.3
+      ],
+      "sleep_advisory": [
+       41.5,
+       38.5,
+       44.3
+      ],
+      "watch_all": [
+       68.3,
+       65.4,
+       71.0
+      ],
+      "action_all": [
+       39.6,
+       35.8,
+       43.4
+      ]
+     },
+     "detected_within_window_pct": {
+      "earth": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "naive_personal": [
+       79.0,
+       71.0,
+       87.0
+      ],
+      "watch": [
+       98.0,
+       95.0,
+       100.0
+      ],
+      "action": [
+       41.0,
+       32.0,
+       51.0
+      ],
+      "watch_all": [
+       100.0,
+       100.0,
+       100.0
+      ],
+      "action_all": [
+       74.0,
+       65.0,
+       82.0
+      ]
+     },
+     "median_delay_days": {
+      "naive_personal": 3.0,
+      "watch": 0.0,
+      "action": 0.0,
+      "watch_all": 0.0,
+      "action_all": 0.0
+     }
+    }
+   }
+  }
+ }
+}

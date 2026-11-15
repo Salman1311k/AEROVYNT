@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="si-assistance" content="Code, text and data processing were developed with Claude (Anthropic), a large language model, and reviewed by the team. See SI_DISCLOSURE.md.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Co-Pilot | AEROVYNT</title>
+<meta name="description" content="Daily health self-check for astronauts: your own normal range, a clickable body map, trends, hazards and clear next steps.">
+
+<meta name="theme-color" content="#EEF5FC"><link rel="manifest" href="../manifest.webmanifest"><link rel="apple-touch-icon" href="../assets/icon-192.png"><meta property="og:title" content="Co-Pilot | AEROVYNT"><meta property="og:description" content="Log daily vitals and get clear next steps and a clickable body map, even 22 light-minutes from Earth."><meta property="og:type" content="website"><meta property="og:url" content="https://aerovynt.earth/copilot/"><meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230A84FF'/%3E%3Cstop offset='.6' stop-color='%235E5CE6'/%3E%3Cstop offset='1' stop-color='%2322D3EE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='32' cy='32' r='22' opacity='.55'/%3E%3Cpath d='M14 35h10l5-13 8 24 5-11h8'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=41"><link rel="stylesheet" href="../assets/pages.css?v=41"><link rel="stylesheet" href="../assets/copilot.css?v=41"><link rel="stylesheet" href="../assets/v4.css?v=41">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-nav"><div class="wrap"><nav class="nav-in" aria-label="Main">
+<a class="brand" href="../" aria-label="AEROVYNT home"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" opacity=".55"/><path d="M5 13h3.5l2-5 3 9 2-4H19"/></svg></span><span><span class="brand-name" style="display:block">AEROVYNT</span><span class="brand-sub" style="display:block">Health co-pilot for crews far from Earth</span></span></a>
+<div class="nav-links"><a class="navlink navhome" href="../">Home</a><a class="navlink" href="../copilot/" aria-current="page">Co-Pilot</a><a class="navlink" href="../evidence/">Evidence</a><span class="offtag" id="offtag" hidden>Offline ready</span></div>
+</nav></div></header>
+<main id="main" class="wrap">
+<section class="stage-dark" aria-label="Co-Pilot status">
+<canvas class="stars" data-stars aria-hidden="true"></canvas>
+<div class="g topbar" id="topbar"></div>
+<section class="mission" aria-label="Mission setup">
+<div class="m-env"><label class="m-lbl" for="env">Where are you?</label><div class="selwrap"><select class="input" id="env"></select></div></div>
+<div class="m-sc"><div class="m-lbl">Demo day</div><div class="sc-row" id="scs"></div></div>
+<div class="m-go"><button class="btn btn-primary" id="start-ci" type="button">Log today’s check-in</button></div>
+</section>
+<div class="flash" id="flash" role="status" hidden></div>
+<div class="row l-hero3" id="hero"></div>
+</section>
+<div class="cards5" id="cards"></div>
+<div id="tabs">
+<div class="tablist" role="tablist" aria-label="Co-Pilot sections">
+<button class="tab" role="tab" data-tab="body">Body map</button><button class="tab" role="tab" data-tab="checkin">Check-in &amp; report</button><button class="tab" role="tab" data-tab="insights">Trends &amp; hazards</button></div>
+
+<div data-panel="body" role="tabpanel"><div class="row l-body"><div><div class="g bm-card" style="text-align:center"><div class="bm-hint">Tap an organ. Colors show status against your own baseline.</div><div id="bodysvg"></div><div class="bm-legend" aria-hidden="true"><span><i style="background:#10B981"></i>Normal</span><span><i style="background:#F59E0B"></i>Watch</span><span><i style="background:#EF4444"></i>Action</span><span><i style="background:#94A3B8"></i>No data</span></div></div><div class="zone-btns" id="zonebtns"></div></div><div id="zonedetail"></div></div></div>
+
+<div data-panel="checkin" role="tabpanel"><div class="row l-checkin"><div>
+<div class="sensor-hero" id="sensors"></div>
+<div class="kicker" id="ci-top">Today’s measurements</div>
+<div class="formwrap"><div id="form"></div><section class="grp"><div class="gh"><span class="gn">4</span><div><h3>Symptoms</h3><p>Tap any you have, or None</p></div></div><div class="pills" id="symptoms"></div></section></div>
+<div class="savebar"><div class="sb-l"><span class="sb-pill sb-emerald" id="sb-pill"></span><span class="sb-t" id="sb-txt"></span></div><button class="btn btn-primary btn-lg" id="log" type="button">Save day</button></div>
+</div><div>
+<div class="g" id="triage"></div>
+<details class="pbox"><summary>Amsler grid vision test</summary><div class="pb"><p>Cover one eye, focus on the center dot at reading distance, and look for wavy, missing or blurred lines. Repeat for the other eye.</p><div style="text-align:center" id="amsler"></div></div></details>
+<div class="g" id="reportbox"><div class="kicker" id="packet-sum">Sealed report for Earth</div>
+<p class="seal-line"><span class="seal-ok" aria-hidden="true">🔒</span> Seal <code id="seal-code">…</code> <span class="mut">SHA-256 tamper check</span></p>
+<div class="pk-btns"><button class="btn btn-primary btn-sm" id="dl-packet" type="button">Download sealed report</button><button class="btn btn-sm" id="copy-summary" type="button">Copy readable summary</button></div>
+<details class="pbox" style="margin-top:12px"><summary>Verify a report (works offline)</summary><div class="pb"><p>Paste a sealed report file. Change any character and it fails.</p><textarea class="input" id="vr-in" rows="4" placeholder="Paste sealed report JSON" style="width:100%;font:12px ui-monospace,monospace"></textarea><div class="pk-btns"><button class="btn btn-sm" id="vr-go" type="button">Verify</button><button class="btn btn-sm" id="vr-load" type="button">Load today’s</button></div><div id="vr-out" role="status" aria-live="polite"></div></div></details>
+<details class="pbox"><summary>Show report contents</summary><div class="pb"><pre class="code" id="packet-code"></pre></div></details></div>
+</div></div>
+<div style="margin-top:18px"><div class="kicker">Due today</div><div id="due"></div></div><div id="progress" hidden></div></div>
+
+<div data-panel="insights" role="tabpanel"><div class="row l-trends"><div>
+<label class="lbl" for="trendsel">Indicator</label><select class="input" id="trendsel" style="margin-bottom:12px"></select><div id="trend"></div></div><div><div id="heat" style="margin-top:6px"></div></div></div>
+<p class="caption">Days 1–28 are simulated demo history. <button class="btn btn-sm" id="dl-csv" type="button">Export CSV</button></p>
+<div class="row l-haz" style="margin-top:18px"><div><div id="radar"></div><div class="g" id="envbrief"></div></div><div id="hazlist"></div></div><div id="riskmap"></div>
+<details class="pbox" style="margin-top:14px"><summary>How to measure each indicator</summary><div class="pb" id="learn"></div></details></div>
+</div>
+<div class="note"><strong>Research prototype.</strong> Decision support; does not replace the Flight Surgeon. Not clinically validated. Demo history is simulated. Entries stay in this browser tab.</div>
+<div class="foot">Final · AEROVYNT · NASA Space Apps Challenge · Data: OSD-575; PMData (CC BY 4.0)  · Team: Muhammad Salman and Sayed Hamza · Built with SI assistance (Claude, Anthropic), see SI_DISCLOSURE.md</div>
+</main>
+<noscript><div class="wrap"><div class="note">AEROVYNT needs JavaScript to run its health engine in your browser.</div></div></noscript>
+<script src="../assets/data.js?v=41"></script><script src="../assets/coach.js?v=41"></script><script src="../assets/delay.js?v=41"></script><script src="../assets/ui.js?v=41"></script><script src="../assets/charts.js?v=41"></script><script src="../assets/stars.js?v=41"></script><script src="../assets/risks.js?v=41"></script><script src="../assets/body.js?v=41"></script><script src="../assets/copilot.js?v=41"></script><script src="../assets/sensors.js?v=41"></script>
+<script src="../assets/fx.js?v=41"></script>
+<script src="../assets/pwa.js?v=41"></script>
+<script>
+/* render watchdog: if the Co-Pilot did not draw (stale cached script/style or a blocked worker), repair it once automatically: refresh the HTTP cache copies, drop the offline cache and worker, reload. Same effect as Ctrl+Shift+R. */
+(function () {
+  function ok() { var h = document.getElementById("hero"), c = document.getElementById("cards"), b = document.getElementById("bodysvg"); return !!(h && h.children.length && c && c.children.length && b && b.children.length); }
+  function repair() {
+    try { if (sessionStorage.getItem("aero-wd")) return; sessionStorage.setItem("aero-wd", "1"); } catch (e) { return; }
+    var jobs = [], urls = [];
+    Array.prototype.forEach.call(document.querySelectorAll("script[src],link[rel=stylesheet]"), function (n) { var u = n.src || n.href; if (u && u.indexOf(location.origin) === 0) urls.push(u); });
+    urls.push(location.href);
+    urls.forEach(function (u) { jobs.push(fetch(u, { cache: "reload" }).catch(function () {})); });
+    if (navigator.serviceWorker) jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (x) { return x.unregister(); })); }).catch(function () {}));
+    if (window.caches) jobs.push(caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); }).catch(function () {}));
+    Promise.all(jobs).then(function () { location.reload(); });
+  }
+  function check() { if (ok()) { try { sessionStorage.removeItem("aero-wd"); } catch (e) {} } else repair(); }
+  window.addEventListener("load", function () { setTimeout(check, 1200); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+{
+  "engine_version": "3.4",
+  "scenarios": {
+    "Strong Multi-System (1.0\u00d7)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 60.4,
+        "earth_no_sleep": 34.0,
+        "naive_personal": 8.3,
+        "watch": 6.7,
+        "action": 1.1,
+        "sleep_advisory": 41.3,
+        "watch_all": 44.0,
+        "action_all": 1.7
+      },
+      "short_night_pct": 41.6,
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "naive_personal": 100.0,
+        "watch": 100.0,
+        "action": 98.3,
+        "watch_all": 100.0,
+        "action_all": 98.3
+      },
+      "median_delay_days": {
+        "watch": 2.0,
+        "action": 3.0,
+        "watch_all": 0.0,
+        "action_all": 3.0
+      }
+    },
+    "Subtle Multi-System (0.5\u00d7 + CUSUM)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 61.0,
+        "earth_no_sleep": 32.7,
+        "naive_personal": 8.2,
+        "watch": 5.7,
+        "action": 0.5,
+        "sleep_advisory": 41.3,
+        "watch_all": 44.2,
+        "action_all": 1.0
+      },
+      "short_night_pct": 41.2,
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "naive_personal": 98.3,
+        "watch": 90.0,
+        "action": 21.7,
+        "watch_all": 96.7,
+        "action_all": 33.3
+      },
+      "median_delay_days": {
+        "watch": 3.0,
+        "action": 6.0,
+        "watch_all": 1.0,
+        "action_all": 6.0
+      }
+    },
+    "Slow Metabolic Drift (14d ramp)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 10,
+      "false_alarm_pct": {
+        "earth": 62.9,
+        "earth_no_sleep": 37.3,
+        "naive_personal": 8.5,
+        "watch": 6.3,
+        "action": 1.1,
+        "sleep_advisory": 42.3,
+        "watch_all": 44.7,
+        "action_all": 2.2
+      },
+      "short_night_pct": 41.8,
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "naive_personal": 95.0,
+        "watch": 80.0,
+        "action": 8.3,
+        "watch_all": 96.7,
+        "action_all": 11.7
+      },
+      "median_delay_days": {
+        "watch": 5.5,
+        "action": 10.0,
+        "watch_all": 1.0,
+        "action_all": 9.0
+      }
+    },
+    "HR / Autonomic Infection": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 62.8,
+        "earth_no_sleep": 33.2,
+        "naive_personal": 8.6,
+        "watch": 5.1,
+        "action": 0.3,
+        "sleep_advisory": 44.4,
+        "watch_all": 46.2,
+        "action_all": 0.5
+      },
+      "short_night_pct": 42.7,
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "naive_personal": 100.0,
+        "watch": 100.0,
+        "action": 86.7,
+        "watch_all": 100.0,
+        "action_all": 86.7
+      },
+      "median_delay_days": {
+        "watch": 2.0,
+        "action": 4.0,
+        "watch_all": 1.0,
+        "action_all": 4.0
+      }
+    },
+    "Sleep-Only Disruption (Hard Case)": {
+      "n_crews": 120,
+      "n_events": 60,
+      "detect_window_days": 7,
+      "false_alarm_pct": {
+        "earth": 57.2,
+        "earth_no_sleep": 28.9,
+        "naive_personal": 8.6,
+        "watch": 6.0,
+        "action": 0.5,
+        "sleep_advisory": 39.3,
+        "watch_all": 41.7,
+        "action_all": 0.9
+      },
+      "short_night_pct": 39.5,
+      "detected_within_window_pct": {
+        "earth": 100.0,
+        "naive_personal": 81.7,
+        "watch": 83.3,
+        "action": 0.0,
+        "watch_all": 100.0,
+        "action_all": 56.7
+      },
+      "median_delay_days": {
+        "watch": 3.0,
+        "action": null,
+        "watch_all": 0.0,
+        "action_all": 5.0
+      }
+    }
+  },
+  "sensitivity": [
+    {
+      "z_thresh": 2.0,
+      "converge_action": 2,
+      "false_alarm_action_pct": 0.9,
+      "detect_action_pct": 100.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.0,
+      "converge_action": 3,
+      "false_alarm_action_pct": 0.3,
+      "detect_action_pct": 95.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.0,
+      "converge_action": 4,
+      "false_alarm_action_pct": 0.3,
+      "detect_action_pct": 95.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.5,
+      "converge_action": 2,
+      "false_alarm_action_pct": 0.4,
+      "detect_action_pct": 92.5,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.5,
+      "converge_action": 3,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 87.5,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 2.5,
+      "converge_action": 4,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 87.5,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.0,
+      "converge_action": 2,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 87.5,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.0,
+      "converge_action": 3,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 85.0,
+      "is_frozen_default": true
+    },
+    {
+      "z_thresh": 3.0,
+      "converge_action": 4,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 85.0,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.5,
+      "converge_action": 2,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 82.5,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.5,
+      "converge_action": 3,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 82.5,
+      "is_frozen_default": false
+    },
+    {
+      "z_thresh": 3.5,
+      "converge_action": 4,
+      "false_alarm_action_pct": 0.2,
+      "detect_action_pct": 82.5,
+      "is_frozen_default": false
+    }
+  ]
+}

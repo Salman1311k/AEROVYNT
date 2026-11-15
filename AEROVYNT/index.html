@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="si-assistance" content="Code, text and data processing were developed with Claude (Anthropic), a large language model, and reviewed by the team. See SI_DISCLOSURE.md.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AEROVYNT | Daily health check for astronauts</title>
+<meta name="description" content="AEROVYNT is a daily health check for astronauts far from Earth: it learns what is normal for each person, spots small changes early and gives clear next steps. Built for NASA Space Apps.">
+<meta property="og:title" content="AEROVYNT | Daily health check for astronauts"><meta property="og:description" content="Health guidance on board, even 22 light-minutes from home."><meta property="og:type" content="website"><meta property="og:url" content="https://aerovynt.earth/">
+<meta name="theme-color" content="#EEF5FC"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230A84FF'/%3E%3Cstop offset='.6' stop-color='%235E5CE6'/%3E%3Cstop offset='1' stop-color='%2322D3EE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='32' cy='32' r='22' opacity='.55'/%3E%3Cpath d='M14 35h10l5-13 8 24 5-11h8'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=41"><link rel="stylesheet" href="assets/home.css?v=41"><link rel="stylesheet" href="assets/v4.css?v=41">
+<link rel="stylesheet" href="assets/polish.css?v=41">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-nav"><div class="wrap"><nav class="nav-in" aria-label="Main">
+<a class="brand" href="./" aria-label="AEROVYNT home"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" opacity=".55"/><path d="M5 13h3.5l2-5 3 9 2-4H19"/></svg></span><span><span class="brand-name" style="display:block">AEROVYNT</span><span class="brand-sub" style="display:block">Health co-pilot for crews far from Earth</span></span></a>
+<div class="nav-links"><a class="navlink" href="mission/">Mars transit sim</a><a class="navlink" href="evidence/">Evidence</a><a class="navlink navcta" href="copilot/">Open Co-Pilot <span aria-hidden="true">→</span></a></div>
+</nav></div></header>
+<main id="main" class="wrap">
+
+<section class="stage" aria-labelledby="h1">
+<canvas id="stars" aria-hidden="true"></canvas><svg class="orbit" viewBox="0 0 600 600" aria-hidden="true"><ellipse cx="300" cy="300" rx="280" ry="92" transform="rotate(-24 300 300)"/><ellipse class="o2" cx="300" cy="300" rx="236" ry="76" transform="rotate(-24 300 300)"/><g transform="rotate(-24 300 300)"><circle r="7"><animateMotion dur="14s" repeatCount="indefinite" path="M580 300a280 92 0 1 1 -560 0a280 92 0 1 1 560 0"/></circle></g></svg><div class="limb" aria-hidden="true"></div>
+<div class="stage-grid">
+<div class="stage-copy">
+<p class="badge-nasa">Built for the NASA Space Apps Challenge</p>
+<h1 id="h1" class="display">Health guidance on board, even 22&nbsp;light&#8209;minutes from home.</h1>
+<svg class="trace" viewBox="0 0 400 40" aria-hidden="true"><path pathLength="1" d="M0 26H130L146 8L164 36L182 2L200 30L212 26H400"/><circle cx="182" cy="2" r="3.5"/></svg>
+<p class="lead">Learns each astronaut’s normal, flags drift early, says what to do next.</p>
+<div class="cta"><a class="btn btn-primary btn-lg" href="copilot/">Open the Co-Pilot</a></div>
+</div>
+
+<section class="console" aria-label="Live demo">
+<div class="console-bar"><span class="t">A day in space</span><span class="live"><i class="dot pulse-live" aria-hidden="true"></i>Live demo</span></div>
+<div id="demo-days" class="seg" role="group" aria-label="Choose a day"></div>
+<div id="demo-env" class="seg seg-sm" role="group" aria-label="Choose where the crew is"></div>
+<div id="demo-body" aria-live="polite"></div>
+</section>
+</div>
+
+</section>
+
+<section class="proofbar" aria-label="Headline results">
+<div class="pb-i"><b><span id="hs-e">–</span> <i aria-hidden="true">→</i> <span id="hs-a">–</span></b><span>false alarms on healthy days, fixed limits vs AEROVYNT <em>(simulated, strong-signal case)</em></span></div>
+<div class="pb-i"><b id="hs-d">–</b><span>of simulated events caught at action level in the strong-signal case; <span id="hs-r"></span> across all five simulated scenarios <em>(simulated)</em></span></div>
+<div class="pb-i"><b>168 / 168</b><span>values copied correctly from NASA’s Inspiration4 file (OSD-575): a data-integrity check, not a validation</span></div>
+</section>
+
+<section class="sec tested" aria-label="Tested before flight"><h2 class="display">What it has been checked against.</h2><div class="tstats"><div><b>600</b><span>simulated missions</span></div><div><b>13</b><span>real wearable users</span></div><div><b>4</b><span>real NASA crew</span></div><div><b>168/168</b><span>NASA values reproduced</span></div></div></section>
+
+<section class="sec" aria-labelledby="h-clocks">
+<h2 id="h-clocks" class="display">Earth’s reply can take 44 minutes. Some problems can’t wait.</h2>
+<div class="g slider" id="dslider">
+<div class="sl-top"><label for="rt" class="sl-l">Move the crew away from Earth</label><output id="rt-out" for="rt">44 min round trip · Mars</output></div>
+<input id="rt" type="range" min="0" max="44" step="1" value="44" aria-label="Earth round-trip time in minutes">
+<div class="sl-marks"><button type="button" data-rt="0">Space station</button><button type="button" data-rt="0.1">Moon</button><button type="button" data-rt="12">Mars, close</button><button type="button" data-rt="44">Mars, far</button><button type="button" data-rt="-1">No link</button></div>
+</div>
+<div class="clocks">
+<article class="g clock fast"><div class="ck-k">Fast clock · minutes</div><h3>Safety limits and urgent symptoms</h3><p class="ck-ex">e.g. chest pain, severe high blood pressure</p><div class="ck-adv" id="adv-fast" aria-live="polite"></div><div class="ck-n" id="ck-fast"></div></article>
+<article class="g clock slow"><div class="ck-k">Slow clock · days</div><h3>Drift from your own normal</h3><p class="ck-ex">e.g. heart rate creeping up over days</p><div class="ck-adv" id="adv-slow" aria-live="polite"></div><div class="ck-n" id="ck-slow"></div></article>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="h-proof">
+<h2 id="h-proof" class="display">Far fewer false alarms.</h2>
+<div id="scn" class="seg seg-lt" role="group" aria-label="Choose a simulated scenario"></div>
+<p class="sim-tag"><b>SIMULATED.</b> Crew simulator with events we defined: trade-offs, not clinical accuracy. <a href="evidence/#ladder">What is unproven</a></p>
+<div class="proof" id="proof">
+<div class="g dotcard earth"><div class="dc-head"><span class="dc-t">Fixed Earth-style limits</span><span class="dc-n" id="v-earth"></span></div><div class="dots" id="d-earth" aria-hidden="true"></div><p class="dc-cap" id="c-earth"></p></div>
+<div class="g dotcard naive"><div class="dc-head"><span class="dc-t">Plain personal z-score</span><span class="dc-n" id="v-naive"></span></div><div class="dots" id="d-naive" aria-hidden="true"></div><p class="dc-cap" id="c-naive"></p></div>
+<div class="g dotcard aero"><div class="dc-head"><span class="dc-t">AEROVYNT action alerts</span><span class="dc-n" id="v-aero"></span></div><div class="dots" id="d-aero" aria-hidden="true"></div><p class="dc-cap" id="c-aero"></p></div>
+<div class="detect">
+<div class="dt-block"><b id="f-act"></b><span id="t-act"></span></div>
+<div class="dt-block"><b id="f-watch"></b><span id="t-watch"></span></div>
+</div>
+</div>
+<p class="fine" id="proof-weak"></p>
+<p class="fine" id="proof-fine">Each dot is one healthy day out of 100. <span id="proof-break" hidden></span><a href="evidence/">Stress tests and limits →</a></p>
+</section>
+
+<section class="sec" aria-labelledby="h-only">
+<h2 id="h-only" class="display">Not in a plain health tracker.</h2>
+<div class="only">
+<a class="g only-i" href="copilot/"><b>Delay-aware advice</b><span>Act on board, or report and wait.</span></a>
+<a class="g only-i" href="copilot/"><b>Clickable body map</b><span>Every reading becomes an organ.</span></a>
+<a class="g only-i" href="copilot/"><b>Sealed reports</b><span>Tamper-evident, checked offline.</span></a>
+<a class="g only-i" href="evidence/"><b>Real NASA data</b><span>Inspiration4 and 13 real wearable users.</span></a>
+</div>
+<div class="ladder-strip" aria-label="Evidence ladder: 3 of 6 rungs reached"><div class="ls-t"><b>Evidence ladder · 3 of 6 rungs reached</b></div><div class="ls-bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><a href="evidence/#ladder">See the ladder →</a></div>
+</section>
+
+<section class="sec" aria-labelledby="h-how" hidden>
+<h2 id="h-how" class="display">Two minutes a day.</h2>
+<div class="steps">
+<article class="g step"><div class="st-vis"><div class="chips-v" id="vitals" aria-hidden="true"></div></div><h3><span class="n">1</span>Measure</h3></article>
+<article class="g step"><div class="st-vis" id="cmp-vis"></div><h3><span class="n">2</span>Compare</h3></article>
+<article class="g step"><div class="st-vis"><div class="packet" id="packet" tabindex="0" aria-label="Example report for the flight surgeon"></div></div><h3><span class="n">3</span>Act</h3></article>
+</div>
+</section>
+
+<section class="sec sec-end" aria-labelledby="h-cta">
+<div class="closing"><div><h2 id="h-cta" class="display">See it in 30 seconds.</h2></div>
+<div class="btn-row"><a class="btn btn-lg btn-primary" href="copilot/">Open the Co-Pilot</a></div></div>
+</section>
+<div class="foot">AEROVYNT · NASA Space Apps 2026 · Decision support, not a medical device · Build 15 Nov 2026 · Team: Muhammad Salman and Sayed Hamza · Built with SI assistance (Claude), see SI_DISCLOSURE.md</div>
+</main>
+<noscript><div class="wrap"><div class="note">AEROVYNT needs JavaScript to run its health engine in your browser.</div></div></noscript>
+<script src="assets/data.js?v=41"></script><script src="assets/coach.js?v=41"></script><script src="assets/delay.js?v=41"></script><script src="assets/ui.js?v=41"></script><script src="assets/home.js?v=41"></script>
+<script src="assets/fx.js?v=41"></script>
+<script src="assets/pwa.js?v=41"></script>
+</body>
+</html>

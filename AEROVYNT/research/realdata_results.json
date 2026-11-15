@@ -1,0 +1,1345 @@
+{
+ "dataset": "PMData (Thambawita et al. 2020), Fitbit resting heart rate + sleep",
+ "licence": "CC BY 4.0",
+ "engine_version": "3.4",
+ "n_participants_total": 16,
+ "qualifying": [
+  "p01",
+  "p02",
+  "p03",
+  "p05",
+  "p06",
+  "p07",
+  "p08",
+  "p09",
+  "p10",
+  "p11",
+  "p14",
+  "p15",
+  "p16"
+ ],
+ "calibration": [
+  "p01",
+  "p03",
+  "p06",
+  "p08",
+  "p10",
+  "p14",
+  "p16"
+ ],
+ "validation": [
+  "p02",
+  "p05",
+  "p07",
+  "p09",
+  "p11",
+  "p15"
+ ],
+ "excluded": [
+  "p04",
+  "p12",
+  "p13"
+ ],
+ "exclusion_reason": "fewer than 60 nights of sleep or fewer than 60 resting-heart-rate days",
+ "calibrated_sleep_sigma_floor_h": 0.9,
+ "simulator_sleep_sd_h": 0.35,
+ "median_real_sleep_robust_sd_h": 0.93,
+ "median_real_hr_robust_sd_bpm": 2.37,
+ "median_real_sleep_mean_h": 7.29,
+ "median_real_sleep_lt6_pct": 25.6,
+ "median_real_sleep_lt7_pct": 50.0,
+ "median_hr_lag1_autocorr": 0.85,
+ "median_weekend_minus_weekday_sleep_h": 0.32,
+ "noise": [
+  {
+   "participant": "p01",
+   "sleep_nights": 150,
+   "hr_days": 152,
+   "sleep_mean_h": 6.11,
+   "sleep_robust_sd_h": 0.83,
+   "sleep_sd_h": 1.3,
+   "sleep_lt6_pct": 54.7,
+   "sleep_lt7_pct": 87.3,
+   "hr_robust_sd_bpm": 1.48,
+   "hr_lag1_autocorr": 0.72,
+   "sleep_lag1_autocorr": 0.03,
+   "weekend_minus_weekday_sleep_h": 0.67
+  },
+  {
+   "participant": "p02",
+   "sleep_nights": 142,
+   "hr_days": 89,
+   "sleep_mean_h": 6.29,
+   "sleep_robust_sd_h": 0.9,
+   "sleep_sd_h": 1.39,
+   "sleep_lt6_pct": 33.8,
+   "sleep_lt7_pct": 85.2,
+   "hr_robust_sd_bpm": 1.62,
+   "hr_lag1_autocorr": 0.61,
+   "sleep_lag1_autocorr": -0.03,
+   "weekend_minus_weekday_sleep_h": 0.12
+  },
+  {
+   "participant": "p03",
+   "sleep_nights": 78,
+   "hr_days": 101,
+   "sleep_mean_h": 6.32,
+   "sleep_robust_sd_h": 1.31,
+   "sleep_sd_h": 2.01,
+   "sleep_lt6_pct": 38.5,
+   "sleep_lt7_pct": 71.8,
+   "hr_robust_sd_bpm": 2.42,
+   "hr_lag1_autocorr": 0.85,
+   "sleep_lag1_autocorr": 0.13,
+   "weekend_minus_weekday_sleep_h": -0.09
+  },
+  {
+   "participant": "p05",
+   "sleep_nights": 118,
+   "hr_days": 86,
+   "sleep_mean_h": 6.33,
+   "sleep_robust_sd_h": 0.89,
+   "sleep_sd_h": 1.5,
+   "sleep_lt6_pct": 40.7,
+   "sleep_lt7_pct": 78.8,
+   "hr_robust_sd_bpm": 2.46,
+   "hr_lag1_autocorr": 0.92,
+   "sleep_lag1_autocorr": -0.01,
+   "weekend_minus_weekday_sleep_h": -0.42
+  },
+  {
+   "participant": "p06",
+   "sleep_nights": 150,
+   "hr_days": 150,
+   "sleep_mean_h": 6.39,
+   "sleep_robust_sd_h": 0.94,
+   "sleep_sd_h": 1.52,
+   "sleep_lt6_pct": 37.3,
+   "sleep_lt7_pct": 75.3,
+   "hr_robust_sd_bpm": 1.61,
+   "hr_lag1_autocorr": 0.87,
+   "sleep_lag1_autocorr": 0.01,
+   "weekend_minus_weekday_sleep_h": 0.74
+  },
+  {
+   "participant": "p07",
+   "sleep_nights": 142,
+   "hr_days": 144,
+   "sleep_mean_h": 7.34,
+   "sleep_robust_sd_h": 0.93,
+   "sleep_sd_h": 1.74,
+   "sleep_lt6_pct": 11.3,
+   "sleep_lt7_pct": 31.7,
+   "hr_robust_sd_bpm": 1.85,
+   "hr_lag1_autocorr": 0.83,
+   "sleep_lag1_autocorr": -0.13,
+   "weekend_minus_weekday_sleep_h": -1.03
+  },
+  {
+   "participant": "p08",
+   "sleep_nights": 133,
+   "hr_days": 139,
+   "sleep_mean_h": 7.57,
+   "sleep_robust_sd_h": 0.82,
+   "sleep_sd_h": 1.58,
+   "sleep_lt6_pct": 6.0,
+   "sleep_lt7_pct": 30.1,
+   "hr_robust_sd_bpm": 2.37,
+   "hr_lag1_autocorr": 0.86,
+   "sleep_lag1_autocorr": 0.05,
+   "weekend_minus_weekday_sleep_h": 0.75
+  },
+  {
+   "participant": "p09",
+   "sleep_nights": 136,
+   "hr_days": 147,
+   "sleep_mean_h": 7.34,
+   "sleep_robust_sd_h": 1.99,
+   "sleep_sd_h": 2.29,
+   "sleep_lt6_pct": 30.1,
+   "sleep_lt7_pct": 50.0,
+   "hr_robust_sd_bpm": 2.78,
+   "hr_lag1_autocorr": 0.89,
+   "sleep_lag1_autocorr": -0.17,
+   "weekend_minus_weekday_sleep_h": -0.32
+  },
+  {
+   "participant": "p10",
+   "sleep_nights": 99,
+   "hr_days": 110,
+   "sleep_mean_h": 7.63,
+   "sleep_robust_sd_h": 0.89,
+   "sleep_sd_h": 1.45,
+   "sleep_lt6_pct": 6.1,
+   "sleep_lt7_pct": 29.3,
+   "hr_robust_sd_bpm": 2.82,
+   "hr_lag1_autocorr": 0.79,
+   "sleep_lag1_autocorr": -0.03,
+   "weekend_minus_weekday_sleep_h": 0.5
+  },
+  {
+   "participant": "p11",
+   "sleep_nights": 119,
+   "hr_days": 80,
+   "sleep_mean_h": 7.34,
+   "sleep_robust_sd_h": 0.93,
+   "sleep_sd_h": 1.52,
+   "sleep_lt6_pct": 5.0,
+   "sleep_lt7_pct": 45.4,
+   "hr_robust_sd_bpm": 2.56,
+   "hr_lag1_autocorr": 0.82,
+   "sleep_lag1_autocorr": -0.04,
+   "weekend_minus_weekday_sleep_h": 0.32
+  },
+  {
+   "participant": "p14",
+   "sleep_nights": 121,
+   "hr_days": 129,
+   "sleep_mean_h": 7.29,
+   "sleep_robust_sd_h": 2.08,
+   "sleep_sd_h": 2.55,
+   "sleep_lt6_pct": 25.6,
+   "sleep_lt7_pct": 47.1,
+   "hr_robust_sd_bpm": 2.66,
+   "hr_lag1_autocorr": 0.94,
+   "sleep_lag1_autocorr": -0.0,
+   "weekend_minus_weekday_sleep_h": 1.55
+  },
+  {
+   "participant": "p15",
+   "sleep_nights": 143,
+   "hr_days": 144,
+   "sleep_mean_h": 7.62,
+   "sleep_robust_sd_h": 1.1,
+   "sleep_sd_h": 1.56,
+   "sleep_lt6_pct": 7.0,
+   "sleep_lt7_pct": 30.1,
+   "hr_robust_sd_bpm": 1.28,
+   "hr_lag1_autocorr": 0.92,
+   "sleep_lag1_autocorr": -0.06,
+   "weekend_minus_weekday_sleep_h": 0.75
+  },
+  {
+   "participant": "p16",
+   "sleep_nights": 147,
+   "hr_days": 152,
+   "sleep_mean_h": 7.06,
+   "sleep_robust_sd_h": 1.38,
+   "sleep_sd_h": 2.32,
+   "sleep_lt6_pct": 23.1,
+   "sleep_lt7_pct": 59.9,
+   "hr_robust_sd_bpm": 2.01,
+   "hr_lag1_autocorr": 0.82,
+   "sleep_lag1_autocorr": -0.08,
+   "weekend_minus_weekday_sleep_h": -0.09
+  }
+ ],
+ "engines": {
+  "v3.2 (sleep floor 0.35 h)": {
+   "calibration": {
+    "per_participant": {
+     "p01": {
+      "days": 145,
+      "earth_sleep_lt6": 55.17,
+      "watch": 4.14,
+      "action": 0.0,
+      "sleep_advisory": 53.79,
+      "sleep_alert": 0.0,
+      "watch_all": 54.48,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 6,
+       "action": 0,
+       "sleep_advisory": 78,
+       "watch_all": 79,
+       "action_all": 0
+      }
+     },
+     "p03": {
+      "days": 101,
+      "earth_sleep_lt6": 28.71,
+      "watch": 8.91,
+      "action": 0.0,
+      "sleep_advisory": 24.75,
+      "sleep_alert": 1.98,
+      "watch_all": 29.7,
+      "action_all": 1.98,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 25,
+       "watch_all": 30,
+       "action_all": 2
+      }
+     },
+     "p06": {
+      "days": 143,
+      "earth_sleep_lt6": 38.46,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 16.08,
+      "sleep_alert": 2.8,
+      "watch_all": 18.18,
+      "action_all": 2.8,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 26,
+       "action_all": 4
+      }
+     },
+     "p08": {
+      "days": 132,
+      "earth_sleep_lt6": 6.06,
+      "watch": 3.03,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 3.03,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 4,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 4,
+       "action_all": 0
+      }
+     },
+     "p10": {
+      "days": 104,
+      "earth_sleep_lt6": 5.77,
+      "watch": 43.27,
+      "action": 30.77,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 43.27,
+      "action_all": 30.77,
+      "_counts": {
+       "watch": 45,
+       "action": 32,
+       "sleep_advisory": 0,
+       "watch_all": 45,
+       "action_all": 32
+      }
+     },
+     "p14": {
+      "days": 127,
+      "earth_sleep_lt6": 24.41,
+      "watch": 9.45,
+      "action": 0.0,
+      "sleep_advisory": 10.24,
+      "sleep_alert": 0.0,
+      "watch_all": 16.54,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 12,
+       "action": 0,
+       "sleep_advisory": 13,
+       "watch_all": 21,
+       "action_all": 0
+      }
+     },
+     "p16": {
+      "days": 145,
+      "earth_sleep_lt6": 22.07,
+      "watch": 5.52,
+      "action": 0.0,
+      "sleep_advisory": 4.83,
+      "sleep_alert": 0.0,
+      "watch_all": 8.97,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 8,
+       "action": 0,
+       "sleep_advisory": 7,
+       "watch_all": 13,
+       "action_all": 0
+      }
+     }
+    },
+    "pooled": {
+     "earth_sleep_lt6": [
+      26.9,
+      14.4,
+      39.7
+     ],
+     "watch": [
+      10.5,
+      5.0,
+      20.8
+     ],
+     "action": [
+      3.6,
+      0.0,
+      11.8
+     ],
+     "sleep_advisory": [
+      16.3,
+      4.8,
+      31.8
+     ],
+     "watch_all": [
+      24.3,
+      12.3,
+      38.9
+     ],
+     "action_all": [
+      4.2,
+      0.2,
+      12.3
+     ]
+    }
+   },
+   "validation": {
+    "per_participant": {
+     "p02": {
+      "days": 137,
+      "earth_sleep_lt6": 33.58,
+      "watch": 8.03,
+      "action": 0.0,
+      "sleep_advisory": 29.2,
+      "sleep_alert": 0.0,
+      "watch_all": 32.12,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 11,
+       "action": 0,
+       "sleep_advisory": 40,
+       "watch_all": 44,
+       "action_all": 0
+      }
+     },
+     "p05": {
+      "days": 130,
+      "earth_sleep_lt6": 33.85,
+      "watch": 7.69,
+      "action": 0.0,
+      "sleep_advisory": 17.69,
+      "sleep_alert": 0.0,
+      "watch_all": 23.08,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 30,
+       "action_all": 0
+      }
+     },
+     "p07": {
+      "days": 137,
+      "earth_sleep_lt6": 11.68,
+      "watch": 7.3,
+      "action": 0.73,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 7.3,
+      "action_all": 0.73,
+      "_counts": {
+       "watch": 10,
+       "action": 1,
+       "sleep_advisory": 0,
+       "watch_all": 10,
+       "action_all": 1
+      }
+     },
+     "p09": {
+      "days": 143,
+      "earth_sleep_lt6": 26.57,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 3.5,
+      "sleep_alert": 0.0,
+      "watch_all": 10.49,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 5,
+       "watch_all": 15,
+       "action_all": 0
+      }
+     },
+     "p11": {
+      "days": 112,
+      "earth_sleep_lt6": 4.46,
+      "watch": 1.79,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 1.79,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 2,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 2,
+       "action_all": 0
+      }
+     },
+     "p15": {
+      "days": 138,
+      "earth_sleep_lt6": 7.25,
+      "watch": 0.72,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 0.72,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 1,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 1,
+       "action_all": 0
+      }
+     }
+    },
+    "pooled": {
+     "earth_sleep_lt6": [
+      20.0,
+      10.8,
+      28.8
+     ],
+     "watch": [
+      5.5,
+      3.1,
+      7.6
+     ],
+     "action": [
+      0.1,
+      0.0,
+      0.4
+     ],
+     "sleep_advisory": [
+      8.5,
+      0.6,
+      18.1
+     ],
+     "watch_all": [
+      12.8,
+      4.3,
+      22.3
+     ],
+     "action_all": [
+      0.1,
+      0.0,
+      0.4
+     ]
+    }
+   },
+   "all": {
+    "per_participant": {
+     "p01": {
+      "days": 145,
+      "earth_sleep_lt6": 55.17,
+      "watch": 4.14,
+      "action": 0.0,
+      "sleep_advisory": 53.79,
+      "sleep_alert": 0.0,
+      "watch_all": 54.48,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 6,
+       "action": 0,
+       "sleep_advisory": 78,
+       "watch_all": 79,
+       "action_all": 0
+      }
+     },
+     "p02": {
+      "days": 137,
+      "earth_sleep_lt6": 33.58,
+      "watch": 8.03,
+      "action": 0.0,
+      "sleep_advisory": 29.2,
+      "sleep_alert": 0.0,
+      "watch_all": 32.12,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 11,
+       "action": 0,
+       "sleep_advisory": 40,
+       "watch_all": 44,
+       "action_all": 0
+      }
+     },
+     "p03": {
+      "days": 101,
+      "earth_sleep_lt6": 28.71,
+      "watch": 8.91,
+      "action": 0.0,
+      "sleep_advisory": 24.75,
+      "sleep_alert": 1.98,
+      "watch_all": 29.7,
+      "action_all": 1.98,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 25,
+       "watch_all": 30,
+       "action_all": 2
+      }
+     },
+     "p05": {
+      "days": 130,
+      "earth_sleep_lt6": 33.85,
+      "watch": 7.69,
+      "action": 0.0,
+      "sleep_advisory": 17.69,
+      "sleep_alert": 0.0,
+      "watch_all": 23.08,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 30,
+       "action_all": 0
+      }
+     },
+     "p06": {
+      "days": 143,
+      "earth_sleep_lt6": 38.46,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 16.08,
+      "sleep_alert": 2.8,
+      "watch_all": 18.18,
+      "action_all": 2.8,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 26,
+       "action_all": 4
+      }
+     },
+     "p07": {
+      "days": 137,
+      "earth_sleep_lt6": 11.68,
+      "watch": 7.3,
+      "action": 0.73,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 7.3,
+      "action_all": 0.73,
+      "_counts": {
+       "watch": 10,
+       "action": 1,
+       "sleep_advisory": 0,
+       "watch_all": 10,
+       "action_all": 1
+      }
+     },
+     "p08": {
+      "days": 132,
+      "earth_sleep_lt6": 6.06,
+      "watch": 3.03,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 3.03,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 4,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 4,
+       "action_all": 0
+      }
+     },
+     "p09": {
+      "days": 143,
+      "earth_sleep_lt6": 26.57,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 3.5,
+      "sleep_alert": 0.0,
+      "watch_all": 10.49,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 5,
+       "watch_all": 15,
+       "action_all": 0
+      }
+     },
+     "p10": {
+      "days": 104,
+      "earth_sleep_lt6": 5.77,
+      "watch": 43.27,
+      "action": 30.77,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 43.27,
+      "action_all": 30.77,
+      "_counts": {
+       "watch": 45,
+       "action": 32,
+       "sleep_advisory": 0,
+       "watch_all": 45,
+       "action_all": 32
+      }
+     },
+     "p11": {
+      "days": 112,
+      "earth_sleep_lt6": 4.46,
+      "watch": 1.79,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 1.79,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 2,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 2,
+       "action_all": 0
+      }
+     },
+     "p14": {
+      "days": 127,
+      "earth_sleep_lt6": 24.41,
+      "watch": 9.45,
+      "action": 0.0,
+      "sleep_advisory": 10.24,
+      "sleep_alert": 0.0,
+      "watch_all": 16.54,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 12,
+       "action": 0,
+       "sleep_advisory": 13,
+       "watch_all": 21,
+       "action_all": 0
+      }
+     },
+     "p15": {
+      "days": 138,
+      "earth_sleep_lt6": 7.25,
+      "watch": 0.72,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 0.72,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 1,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 1,
+       "action_all": 0
+      }
+     },
+     "p16": {
+      "days": 145,
+      "earth_sleep_lt6": 22.07,
+      "watch": 5.52,
+      "action": 0.0,
+      "sleep_advisory": 4.83,
+      "sleep_alert": 0.0,
+      "watch_all": 8.97,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 8,
+       "action": 0,
+       "sleep_advisory": 7,
+       "watch_all": 13,
+       "action_all": 0
+      }
+     }
+    },
+    "pooled": {
+     "earth_sleep_lt6": [
+      23.6,
+      15.5,
+      32.2
+     ],
+     "watch": [
+      8.1,
+      4.8,
+      13.7
+     ],
+     "action": [
+      1.9,
+      0.0,
+      6.1
+     ],
+     "sleep_advisory": [
+      12.6,
+      4.8,
+      22.5
+     ],
+     "watch_all": [
+      18.9,
+      11.0,
+      28.3
+     ],
+     "action_all": [
+      2.3,
+      0.1,
+      6.6
+     ]
+    }
+   }
+  },
+  "v3.4 (sleep floor 0.9 h)": {
+   "calibration": {
+    "per_participant": {
+     "p01": {
+      "days": 145,
+      "earth_sleep_lt6": 55.17,
+      "watch": 4.14,
+      "action": 0.0,
+      "sleep_advisory": 53.79,
+      "sleep_alert": 0.0,
+      "watch_all": 54.48,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 6,
+       "action": 0,
+       "sleep_advisory": 78,
+       "watch_all": 79,
+       "action_all": 0
+      }
+     },
+     "p03": {
+      "days": 101,
+      "earth_sleep_lt6": 28.71,
+      "watch": 8.91,
+      "action": 0.0,
+      "sleep_advisory": 24.75,
+      "sleep_alert": 1.98,
+      "watch_all": 29.7,
+      "action_all": 1.98,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 25,
+       "watch_all": 30,
+       "action_all": 2
+      }
+     },
+     "p06": {
+      "days": 143,
+      "earth_sleep_lt6": 38.46,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 16.08,
+      "sleep_alert": 2.8,
+      "watch_all": 18.18,
+      "action_all": 2.8,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 26,
+       "action_all": 4
+      }
+     },
+     "p08": {
+      "days": 132,
+      "earth_sleep_lt6": 6.06,
+      "watch": 2.27,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 2.27,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 3,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 3,
+       "action_all": 0
+      }
+     },
+     "p10": {
+      "days": 104,
+      "earth_sleep_lt6": 5.77,
+      "watch": 43.27,
+      "action": 30.77,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 43.27,
+      "action_all": 30.77,
+      "_counts": {
+       "watch": 45,
+       "action": 32,
+       "sleep_advisory": 0,
+       "watch_all": 45,
+       "action_all": 32
+      }
+     },
+     "p14": {
+      "days": 127,
+      "earth_sleep_lt6": 24.41,
+      "watch": 9.45,
+      "action": 0.0,
+      "sleep_advisory": 10.24,
+      "sleep_alert": 0.0,
+      "watch_all": 16.54,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 12,
+       "action": 0,
+       "sleep_advisory": 13,
+       "watch_all": 21,
+       "action_all": 0
+      }
+     },
+     "p16": {
+      "days": 145,
+      "earth_sleep_lt6": 22.07,
+      "watch": 5.52,
+      "action": 0.0,
+      "sleep_advisory": 4.83,
+      "sleep_alert": 0.0,
+      "watch_all": 8.97,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 8,
+       "action": 0,
+       "sleep_advisory": 7,
+       "watch_all": 13,
+       "action_all": 0
+      }
+     }
+    },
+    "pooled": {
+     "earth_sleep_lt6": [
+      26.9,
+      14.4,
+      39.7
+     ],
+     "watch": [
+      10.4,
+      4.7,
+      20.7
+     ],
+     "action": [
+      3.6,
+      0.0,
+      11.8
+     ],
+     "sleep_advisory": [
+      16.3,
+      4.8,
+      31.8
+     ],
+     "watch_all": [
+      24.2,
+      12.1,
+      38.9
+     ],
+     "action_all": [
+      4.2,
+      0.2,
+      12.3
+     ]
+    }
+   },
+   "validation": {
+    "per_participant": {
+     "p02": {
+      "days": 137,
+      "earth_sleep_lt6": 33.58,
+      "watch": 6.57,
+      "action": 0.0,
+      "sleep_advisory": 29.2,
+      "sleep_alert": 0.0,
+      "watch_all": 32.12,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 40,
+       "watch_all": 44,
+       "action_all": 0
+      }
+     },
+     "p05": {
+      "days": 130,
+      "earth_sleep_lt6": 33.85,
+      "watch": 6.92,
+      "action": 0.0,
+      "sleep_advisory": 17.69,
+      "sleep_alert": 0.0,
+      "watch_all": 22.31,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 29,
+       "action_all": 0
+      }
+     },
+     "p07": {
+      "days": 137,
+      "earth_sleep_lt6": 11.68,
+      "watch": 5.84,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 5.84,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 8,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 8,
+       "action_all": 0
+      }
+     },
+     "p09": {
+      "days": 143,
+      "earth_sleep_lt6": 26.57,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 3.5,
+      "sleep_alert": 0.0,
+      "watch_all": 10.49,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 5,
+       "watch_all": 15,
+       "action_all": 0
+      }
+     },
+     "p11": {
+      "days": 112,
+      "earth_sleep_lt6": 4.46,
+      "watch": 0.89,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 0.89,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 1,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 1,
+       "action_all": 0
+      }
+     },
+     "p15": {
+      "days": 138,
+      "earth_sleep_lt6": 7.25,
+      "watch": 0.72,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 0.72,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 1,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 1,
+       "action_all": 0
+      }
+     }
+    },
+    "pooled": {
+     "earth_sleep_lt6": [
+      20.0,
+      10.8,
+      28.8
+     ],
+     "watch": [
+      4.8,
+      2.7,
+      6.7
+     ],
+     "action": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "sleep_advisory": [
+      8.5,
+      0.6,
+      18.1
+     ],
+     "watch_all": [
+      12.3,
+      3.7,
+      21.7
+     ],
+     "action_all": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "all": {
+    "per_participant": {
+     "p01": {
+      "days": 145,
+      "earth_sleep_lt6": 55.17,
+      "watch": 4.14,
+      "action": 0.0,
+      "sleep_advisory": 53.79,
+      "sleep_alert": 0.0,
+      "watch_all": 54.48,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 6,
+       "action": 0,
+       "sleep_advisory": 78,
+       "watch_all": 79,
+       "action_all": 0
+      }
+     },
+     "p02": {
+      "days": 137,
+      "earth_sleep_lt6": 33.58,
+      "watch": 6.57,
+      "action": 0.0,
+      "sleep_advisory": 29.2,
+      "sleep_alert": 0.0,
+      "watch_all": 32.12,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 40,
+       "watch_all": 44,
+       "action_all": 0
+      }
+     },
+     "p03": {
+      "days": 101,
+      "earth_sleep_lt6": 28.71,
+      "watch": 8.91,
+      "action": 0.0,
+      "sleep_advisory": 24.75,
+      "sleep_alert": 1.98,
+      "watch_all": 29.7,
+      "action_all": 1.98,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 25,
+       "watch_all": 30,
+       "action_all": 2
+      }
+     },
+     "p05": {
+      "days": 130,
+      "earth_sleep_lt6": 33.85,
+      "watch": 6.92,
+      "action": 0.0,
+      "sleep_advisory": 17.69,
+      "sleep_alert": 0.0,
+      "watch_all": 22.31,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 9,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 29,
+       "action_all": 0
+      }
+     },
+     "p06": {
+      "days": 143,
+      "earth_sleep_lt6": 38.46,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 16.08,
+      "sleep_alert": 2.8,
+      "watch_all": 18.18,
+      "action_all": 2.8,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 23,
+       "watch_all": 26,
+       "action_all": 4
+      }
+     },
+     "p07": {
+      "days": 137,
+      "earth_sleep_lt6": 11.68,
+      "watch": 5.84,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 5.84,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 8,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 8,
+       "action_all": 0
+      }
+     },
+     "p08": {
+      "days": 132,
+      "earth_sleep_lt6": 6.06,
+      "watch": 2.27,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 2.27,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 3,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 3,
+       "action_all": 0
+      }
+     },
+     "p09": {
+      "days": 143,
+      "earth_sleep_lt6": 26.57,
+      "watch": 6.99,
+      "action": 0.0,
+      "sleep_advisory": 3.5,
+      "sleep_alert": 0.0,
+      "watch_all": 10.49,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 10,
+       "action": 0,
+       "sleep_advisory": 5,
+       "watch_all": 15,
+       "action_all": 0
+      }
+     },
+     "p10": {
+      "days": 104,
+      "earth_sleep_lt6": 5.77,
+      "watch": 43.27,
+      "action": 30.77,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 43.27,
+      "action_all": 30.77,
+      "_counts": {
+       "watch": 45,
+       "action": 32,
+       "sleep_advisory": 0,
+       "watch_all": 45,
+       "action_all": 32
+      }
+     },
+     "p11": {
+      "days": 112,
+      "earth_sleep_lt6": 4.46,
+      "watch": 0.89,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 0.89,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 1,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 1,
+       "action_all": 0
+      }
+     },
+     "p14": {
+      "days": 127,
+      "earth_sleep_lt6": 24.41,
+      "watch": 9.45,
+      "action": 0.0,
+      "sleep_advisory": 10.24,
+      "sleep_alert": 0.0,
+      "watch_all": 16.54,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 12,
+       "action": 0,
+       "sleep_advisory": 13,
+       "watch_all": 21,
+       "action_all": 0
+      }
+     },
+     "p15": {
+      "days": 138,
+      "earth_sleep_lt6": 7.25,
+      "watch": 0.72,
+      "action": 0.0,
+      "sleep_advisory": 0.0,
+      "sleep_alert": 0.0,
+      "watch_all": 0.72,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 1,
+       "action": 0,
+       "sleep_advisory": 0,
+       "watch_all": 1,
+       "action_all": 0
+      }
+     },
+     "p16": {
+      "days": 145,
+      "earth_sleep_lt6": 22.07,
+      "watch": 5.52,
+      "action": 0.0,
+      "sleep_advisory": 4.83,
+      "sleep_alert": 0.0,
+      "watch_all": 8.97,
+      "action_all": 0.0,
+      "_counts": {
+       "watch": 8,
+       "action": 0,
+       "sleep_advisory": 7,
+       "watch_all": 13,
+       "action_all": 0
+      }
+     }
+    },
+    "pooled": {
+     "earth_sleep_lt6": [
+      23.6,
+      15.5,
+      32.2
+     ],
+     "watch": [
+      7.7,
+      4.3,
+      13.3
+     ],
+     "action": [
+      1.9,
+      0.0,
+      6.0
+     ],
+     "sleep_advisory": [
+      12.6,
+      4.8,
+      22.5
+     ],
+     "watch_all": [
+      18.6,
+      10.6,
+      28.0
+     ],
+     "action_all": [
+      2.2,
+      0.0,
+      6.5
+     ]
+    }
+   }
+  }
+ },
+ "sleep_pool_size": 878,
+ "caveat": "No illness labels exist in PMData. Alert rates are upper bounds on false alarms and say nothing about detection."
+}

@@ -1,0 +1,85 @@
+/* SI-assisted: developed with Claude (Anthropic), a large language model, and reviewed and tested by the AEROVYNT team. See SI_DISCLOSURE.md. */
+/* AEROVYNT shared page styles for Co-Pilot and Evidence: the dark mission stage from Home, plus calmer tabs. */
+
+/* ---------- dark stage ---------- */
+.stage-dark{position:relative;overflow:hidden;isolation:isolate;margin-top:6px;border-radius:clamp(26px,3vw,44px);padding:clamp(14px,2.2vw,32px);color:#EAF1FF;
+ background:radial-gradient(900px 540px at 6% -12%,rgba(34,211,238,.18),transparent 60%),radial-gradient(820px 560px at 100% 0%,rgba(94,92,230,.34),transparent 62%),linear-gradient(180deg,#060B1C 0%,#0A1430 64%,#0B1B3F 100%);
+ box-shadow:0 44px 110px rgba(10,30,80,.30),0 0 0 1px rgba(255,255,255,.07) inset}
+.stage-dark canvas.stars{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.stage-dark :focus-visible{outline-color:#7DD3FC}
+.stage-dark a{color:#7DD3FC}
+
+/* light primitives, re-skinned for the dark stage */
+.stage-dark .g,.stage-dark .g-ok,.stage-dark .g-warn,.stage-dark .g-bad,.stage-dark .g-none{color:#EAF1FF;-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(7,14,36,.62);
+ background-image:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 24px 50px rgba(0,0,0,.28)}
+.stage-dark .g-ok{border-color:rgba(52,211,153,.42);background-image:linear-gradient(160deg,rgba(16,185,129,.16),rgba(16,185,129,.04))}
+.stage-dark .g-warn{border-color:rgba(251,191,36,.48);background-image:linear-gradient(160deg,rgba(245,158,11,.17),rgba(245,158,11,.04))}
+.stage-dark .g-bad{border-color:rgba(251,113,133,.52);background-image:linear-gradient(160deg,rgba(239,68,68,.18),rgba(239,68,68,.04))}
+.stage-dark .kicker{color:#7DD3FC}
+.stage-dark .hero-title{color:#fff}
+.stage-dark .hero-sub,.stage-dark .mut{color:#9FB6DD}
+.stage-dark .act{color:#EAF1FF;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.10)}
+.stage-dark .pill-emerald{background:rgba(52,211,153,.14);color:#6EE7B7;border-color:rgba(52,211,153,.45)}
+.stage-dark .pill-amber{background:rgba(251,191,36,.14);color:#FCD34D;border-color:rgba(251,191,36,.5)}
+.stage-dark .pill-crimson{background:rgba(251,113,133,.16);color:#FDA4AF;border-color:rgba(251,113,133,.55)}
+.stage-dark .pill-unknown{background:rgba(148,163,184,.16);color:#CBD5E1;border-color:rgba(148,163,184,.4)}
+.stage-dark .xp-bar{background:rgba(255,255,255,.12)}
+.stage-dark .badge{background:rgba(125,211,252,.10);border-color:rgba(125,211,252,.30);color:#BFE3FF}
+.stage-dark .chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);box-shadow:none;color:#EAF1FF}
+.stage-dark .brand{color:#fff}
+.stage-dark .brand-sub{color:#9FB6DD}
+.stage-dark .ring-svg{filter:drop-shadow(0 8px 22px rgba(34,211,238,.20))}
+.stage-dark .ring-svg>circle:not(.ring-arc){fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.12)}
+.stage-dark .ring-svg text{fill:#fff}
+.stage-dark .ring-svg text:last-of-type{fill:#9FB6DD}
+.stage-dark .flash{background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.45);color:#A7F3D0}
+.stage-dark .topbar.g{background:none;border:0;box-shadow:none;padding:6px 6px 16px;margin-bottom:0}
+.btn-white{background:#fff;color:#0A4FA6;border:none}
+.btn-white:hover{color:#0A4FA6;box-shadow:0 14px 30px rgba(11,27,51,.25)}
+.btn-lg{min-height:58px;padding:0 28px;border-radius:19px;font-size:1rem}
+.display{font-family:var(--display)}
+
+/* ---------- tabs: quiet glass bar, dark ink for the selected tab ---------- */
+.tablist{margin:26px 0 20px}
+.tab[aria-selected="true"]{background:#0B1B33;color:#fff;box-shadow:0 8px 20px rgba(11,27,51,.28)}
+.tab[aria-selected="true"]:hover{color:#fff}
+
+@media (max-width:640px){.stage-dark{border-radius:26px;padding:12px}.stage-dark .topbar.g{padding:6px 4px 14px}}
+.dev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.dev{border-radius:14px;border:1px solid rgba(120,140,180,.28);padding:10px 12px;background:rgba(120,140,180,.08)}
+
+.sensor-hero{border-radius:26px;padding:22px 24px;margin-bottom:22px;color:#EAF4FF;background:radial-gradient(500px 240px at 100% 0%,rgba(34,211,238,.35),transparent 70%),linear-gradient(135deg,#1D4ED8,#4F46E5);box-shadow:0 22px 50px rgba(37,80,200,.35)}
+.sensor-hero .sh-top{display:flex;gap:18px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.sensor-hero .sh-kick{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;opacity:.85}
+.sensor-hero .sh-title{margin:4px 0 6px;font-size:clamp(1.6rem,3vw,2.1rem);line-height:1.1;letter-spacing:-.02em;color:#fff}
+.sensor-hero .sh-sub{margin:0;max-width:46ch;font-size:.9rem;line-height:1.5;opacity:.92}
+.sensor-hero .sh-btns{display:flex;flex-direction:column;gap:8px;min-width:210px;flex:0 1 240px}
+.sensor-hero .sh-go{min-height:60px;border:0;border-radius:18px;font:inherit;font-size:1.1rem;font-weight:800;cursor:pointer;background:#fff;color:#1D4ED8;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.sensor-hero .sh-go.on{background:#FEE2E2;color:#B91C1C}
+.sensor-hero .sh-go:focus-visible,.sensor-hero .sh-alt:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.sensor-hero .sh-alt{min-height:42px;border-radius:14px;font:inherit;font-weight:700;cursor:pointer;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.sensor-hero .sh-alt:disabled{opacity:.5;cursor:default}
+.sensor-hero .dev{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff}
+.sensor-hero .dev-m{font-size:.72rem;opacity:.8}.sensor-hero .dev-s{font-size:.76rem;margin-top:2px;opacity:.9}.sensor-hero .dev-s.ok{color:#86EFAC;font-weight:700;opacity:1}
+.sensor-hero .sh-log{margin-top:6px;border-radius:12px;padding:10px 12px;background:rgba(2,10,40,.45);font:.74rem/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre;overflow:auto;max-height:110px}
+.sensor-hero .sh-adv{margin-top:12px;font-size:.84rem}.sensor-hero .sh-adv summary{cursor:pointer;font-weight:700;opacity:.9}.sensor-hero .sh-adv p{margin:8px 0}
+.sensor-hero code{background:rgba(255,255,255,.18);color:#fff;padding:1px 5px;border-radius:6px}
+.sensor-hero .btn{color:#0B2A6B}
+.sensor-hero .sh-msg{margin-top:10px;font-size:.84rem;min-height:1.2em}
+
+/* v3.4b: compact sensor card */
+.sensor-hero{padding:14px 18px;margin-bottom:16px;border-radius:22px}
+.sensor-hero .sh-title{font-size:clamp(1.15rem,2vw,1.4rem);margin:2px 0 4px}
+.sensor-hero .sh-sub{font-size:.78rem;line-height:1.4;max-width:none}
+.sensor-hero .sh-top{gap:12px;flex-wrap:nowrap;align-items:center}
+.sensor-hero .sh-top>div:first-child{flex:1 1 auto;min-width:0}
+.sensor-hero .sh-btns{flex:0 0 150px;min-width:150px;gap:6px}
+.sensor-hero .sh-go{min-height:46px;font-size:1rem;border-radius:14px}
+.sensor-hero .sh-alt{min-height:34px;font-size:.78rem;border-radius:11px}
+.sensor-hero .dev-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin:10px 0 6px}
+.sensor-hero .dev{display:flex;gap:8px;align-items:center;padding:6px 9px;border-radius:11px;font-size:.74rem;line-height:1.25}
+.sensor-hero .dev-i{font-size:1.15rem}.sensor-hero .dev-m{display:none}
+.sensor-hero .dev strong{display:block;font-size:.74rem}.sensor-hero .dev-s{display:block;font-size:.68rem}
+.sensor-hero .sh-log{max-height:58px;padding:6px 10px;font-size:.68rem;margin-top:4px}
+.sensor-hero .sh-adv{margin-top:8px;font-size:.78rem}.sensor-hero .sh-msg{margin-top:6px;font-size:.78rem}
+@media (max-width:640px){.sensor-hero .sh-top{flex-wrap:wrap}.sensor-hero .sh-btns{flex:1 1 100%;flex-direction:row}.sensor-hero .sh-go,.sensor-hero .sh-alt{flex:1}}
